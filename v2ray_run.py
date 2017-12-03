@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 #coding: utf-8
 
-import commands, json, urllib, os, time, datetime
+import commands, json, urllib, os, time, datetime, requests
 
-ip = '192.168.123.8'
-key = 'tienon'
 userCount = 0
 sleepTime = 30
 
@@ -14,8 +12,17 @@ def printLog(content):
 def main(): 
     while 1:
         #从网站读取用户配置
-        response = urllib.urlopen('http://' + ip + '/mu/users?key=' + key)
-        jsonstr = json.loads(response.read())
+        url = "https://speedss.ml/mu/users"
+        querystring = {"key":"tienon"}
+
+        headers = {
+            'cache-control': "no-cache",
+            'postman-token': "0c6691db-d363-8c9c-128d-21d76fa1f0f1"
+            }
+        response = requests.request("GET", url, headers=headers, params=querystring)
+        print(response.text)
+        # response = urllib.urlopen(address + '/mu/users?key=' + key)
+        jsonstr = json.loads(response.text)
         printLog("Load json from server success")
         userArray = []
         #遍历拿到所有用户的passwd字段
@@ -70,7 +77,6 @@ def main():
         printLog("Restart the v2ray service")
         printLog("Data update is completed, sleep %d sec" % sleepTime)
         time.sleep(sleepTime)
-
 
 if __name__ == '__main__':
     main()
