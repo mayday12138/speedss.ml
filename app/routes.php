@@ -1,12 +1,13 @@
 <?php
 
+use Slim\App;
+use Slim\Container;
 use App\Controllers;
 use App\Middleware\Admin;
 use App\Middleware\Api;
 use App\Middleware\Auth;
 use App\Middleware\Guest;
 use App\Middleware\Mu;
-use Slim\App;
 use Zeuxisoo\Whoops\Provider\Slim\WhoopsMiddleware;
 
 /***
@@ -22,22 +23,53 @@ if (defined("DEBUG")) {
 // Make a Slim App
 // $app = new App($c)
 $app = new App([
-    'settings' => [
-        'debug' => $debug,
-        'whoops.editor' => 'sublime'
-    ]
+   'settings' => [
+       'debug' => $debug,
+       'whoops.editor' => 'sublime'
+   ]
 ]);
 $app->add(new WhoopsMiddleware);
+
+// $configuration = [
+//     'settings' => [
+//         'debug' => $debug,
+//         'whoops.editor' => 'sublime',
+//         'displayErrorDetails' => $debug
+//     ]
+// ];
+// $container = new Container($configuration);
+// $container['notFoundHandler'] = function ($c) {
+//     return function ($request, $response) use ($c) {
+//         return $response->withAddedHeader('Location', '/404');
+//     };
+// };
+// $container['notAllowedHandler'] = function ($c) {
+//     return function ($request, $response, $methods) use ($c) {
+//         return $response->withAddedHeader('Location', '/405');
+//     };
+// };
+// if ($debug==false) {
+//     $container['errorHandler'] = function ($c) {
+//         return function ($request, $response, $exception) use ($c) {
+//             return $response->withAddedHeader('Location', '/500');
+//         };
+//     };
+// }
+// $app = new App($container);
+// $app->add(new WhoopsMiddleware);
 
 
 // Home
 // 现在直接到登录页
-$app->get('/', 'App\Controllers\HomeController:index');
+//$app->get('/', 'App\Controllers\HomeController:index');
 //$app->get('/', 'App\Controllers\AuthController:login');
 $app->get('/intro', 'App\Controllers\HomeController:intro');
 $app->get('/configclient', 'App\Controllers\HomeController:configclient');
+$app->get('/404', 'App\Controllers\HomeController:page404');
+$app->get('/405', 'App\Controllers\HomeController:page405');
+$app->get('/500', 'App\Controllers\HomeController:page500');
 // 之前是这个
-//$app->get('/', 'App\Controllers\HomeController:intro');
+$app->get('/', 'App\Controllers\HomeController:intro');
 $app->get('/code', 'App\Controllers\HomeController:code');
 $app->get('/tos', 'App\Controllers\HomeController:tos');
 $app->get('/debug', 'App\Controllers\HomeController:debug');
@@ -64,6 +96,9 @@ $app->group('/user', function () {
     $this->get('/logout', 'App\Controllers\UserController:logout');
 
     $this->get('/getclient', 'App\Controllers\UserController:getclient');
+    $this->get('/payment', 'App\Controllers\UserController:payment');
+    $this->post('/payment', 'App\Controllers\UserController:paymentHandle');
+    $this->get('/order', 'App\Controllers\UserController:order');
 
 })->add(new Auth());
 
@@ -109,6 +144,21 @@ $app->group('/admin', function () {
     $this->put('/user/{id}', 'App\Controllers\Admin\UserController:update');
     $this->delete('/user/{id}', 'App\Controllers\Admin\UserController:delete');
     $this->get('/user/{id}/delete', 'App\Controllers\Admin\UserController:deleteGet');
+    $this->get('/user/checkpaymentstatus', 'App\Controllers\Admin\UserController:checkPaymentStatus');
+
+    // Order
+    $this->get('/order', 'App\Controllers\Admin\UserController:order');
+    $this->get('/order/{id}/pass', 'App\Controllers\Admin\UserController:orderPass');
+
+    // userinfo
+    $this->get('/userinfo', 'App\Controllers\Admin\UserController:userInfo');
+    $this->get('/userinfo/{id}/hidden', 'App\Controllers\Admin\UserController:userInfoHidden');
+    $this->get('/userinfo/{id}/edit', 'App\Controllers\Admin\UserController:userInfoEdit');
+    $this->post('/userinfo/edit', 'App\Controllers\Admin\UserController:userInfoEditPost');
+    $this->get('/userinfo/new', 'App\Controllers\Admin\UserController:userInfoNew');
+    $this->post('/userinfo/new', 'App\Controllers\Admin\UserController:userInfoNewHandle');
+    $this->get('/userinfo/{id}/delete', 'App\Controllers\Admin\UserController:userInfoDelete');
+
 
     // Test
     $this->get('/test/sendmail', 'App\Controllers\Admin\TestController:sendMail');

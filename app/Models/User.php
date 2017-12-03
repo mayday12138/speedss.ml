@@ -38,8 +38,9 @@ class User extends Model
 
     public function getGravatarAttribute()
     {
-        $hash = md5(strtolower(trim($this->attributes['email'])));
-        return "https://secure.gravatar.com/avatar/$hash";
+        // $hash = md5(strtolower(trim($this->attributes['email'])));
+        // return "https://secure.gravatar.com/avatar/$hash";
+        return "/assets/public/img/gravatar.jpg";
     }
 
     public function isAdmin()
@@ -131,6 +132,11 @@ class User extends Model
     {
         $total = $this->attributes['u'] + $this->attributes['d'];
         return Tools::flowAutoShow($total);
+    }
+
+    public function paymentDate()
+    {
+        return Tools::toDateTime($this->attributes['payment_date']);
     }
 
     public function unusedTraffic()

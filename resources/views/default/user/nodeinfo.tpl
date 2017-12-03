@@ -11,16 +11,16 @@
     <section class="content">
         <!-- START PROGRESS BARS -->
 
-        <div class="row">
-              <div class="col-md-8">
-                                        <button id="getclient" class="btn btn-primary">获取客户端</button>
-                                        <button id="getconfig" class="btn btn-primary">获取配置</button>
-                                        <button id="nodelist" class="btn btn-primary">节点列表</button>
-                                        <button id="trafficrecord" class="btn btn-primary">流量记录</button>
-                                        <button id="changeinfo" class="btn btn-primary">修改资料</button>
-                                        <button id="invitefriend" class="btn btn-primary">邀请好友</button>
-              </div>
-        </div>
+        <!-- <div class="row">
+            <div class="col-md-8">
+                <button id="getclient" class="btn btn-primary">获取客户端</button>
+                <button id="getconfig" class="btn btn-primary">获取配置</button>
+                <button id="nodelist" class="btn btn-primary">节点列表</button>
+                <button id="trafficrecord" class="btn btn-primary">流量记录</button>
+                <button id="changeinfo" class="btn btn-primary">修改资料</button>
+                <button id="invitefriend" class="btn btn-primary">邀请好友</button>
+            </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-12">
@@ -28,14 +28,15 @@
                     <h4>注意!</h4>
                     <p>配置文件以及二维码请勿泄露！</p>
                     <p>安卓和Mac客户端可以直接点击一键导入配置(客户端安装并开启的情况下)</p>
-                    <p>windows客户端可以右键点击屏幕右下角状态栏的小飞机图标->服务器->扫描屏幕上的二维码(确保小飞机图标->服务器->勾选为最新添加的服务器), 然后右键点击小飞机图标->启动系统代理, 系统代理模式选择全局模式. 配置成功</p>
+                    <p>windows客户端可以右键点击屏幕右下角状态栏的小飞机图标->服务器->扫描屏幕上的二维码(确保小飞机图标->服务器->勾选为最新添加的服务器), 然后右键点击小飞机图标->启动系统代理, 系统代理模式选择全局模式.
+                        配置成功</p>
                 </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6">
-            <a class="btn btn-primary btn-flat" href="{$ssqr}">点击一键导入配置</a>
+                <a class="btn btn-primary btn-flat" href="{$ssqr}">点击一键导入配置</a>
             </div>
         </div>
 
@@ -168,6 +169,6 @@
         </script>
     </section>
     <!-- /.content -->
-</div><!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 {include file='user/footer.tpl'}
-

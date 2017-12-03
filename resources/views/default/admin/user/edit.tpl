@@ -117,8 +117,8 @@
                             </div>
                             <div class="row">
                                 <fieldset class="col-sm-6">
-                                    <legend>流量</legend>
-                                    <div class="form-group">
+                                    <legend>套餐</legend>
+                                    <!--<div class="form-group">
                                         <label class="col-sm-3 control-label">总流量</label>
 
                                         <div class="col-sm-9">
@@ -138,6 +138,22 @@
                                         <div class="col-sm-9">
                                             <input class="form-control" id="traffic_usage" type="text"
                                                    value="{$user->usedTraffic()}" readonly>
+                                        </div>
+                                    </div>-->
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">套餐时间</label>
+
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="payment_day" type="text"
+                                                   value="{$user->payment_day}">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">套餐有效期至</label>
+
+                                        <div class="col-sm-9">
+                                            <input class="form-control" id="payment_date" type="text"
+                                                   value="{$user->paymentDate()}" readonly>
                                         </div>
                                     </div>
                                 </fieldset>
@@ -195,14 +211,15 @@
                     method: $("#method").val(),
                     enable: $("#enable").val(),
                     is_admin: $("#is_admin").val(),
-                    ref_by: $("#ref_by").val()
+                    ref_by: $("#ref_by").val(),
+                    payment_day: $("#payment_day").val()
                 },
                 success: function (data) {
                     if (data.ret) {
                         $("#msg-error").hide(100);
                         $("#msg-success").show(100);
                         $("#msg-success-p").html(data.msg);
-                        window.setTimeout("location.href='/admin/user'", 2000);
+                        window.setTimeout("location.href='/admin/user/{$user.id}/edit'", 2000);
                     } else {
                         $("#msg-error").hide(10);
                         $("#msg-error").show(100);

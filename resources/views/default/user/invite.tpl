@@ -17,14 +17,15 @@
             <div class="col-sm-12">
                 <div id="msg-error" class="alert alert-warning alert-dismissable" style="display:none">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4><i class="icon fa fa-warning"></i> 出错了!</h4>
+                    <h4>
+                        <i class="icon fa fa-warning"></i> 出错了!</h4>
 
                     <p id="msg-error-p"></p>
                 </div>
             </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8">
                 <button id="getclient" class="btn btn-primary">获取客户端</button>
                 <button id="getconfig" class="btn btn-primary">获取配置</button>
@@ -33,7 +34,7 @@
                 <button id="changeinfo" class="btn btn-primary">修改资料</button>
                 <button id="invitefriend" class="btn btn-primary">邀请好友</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-6">
@@ -56,10 +57,6 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
-                        <!--<p>当前您可以生成<code>{$user->invite_num}</code>个邀请码。 </p>-->
-                        <!--{if $user->invite_num }-->
-                        <button id="invite" class="btn btn-sm btn-info">生成我的邀请码</button>
-                        <!--{/if}-->
                         <button id="invite" class="btn btn-sm btn-info">生成我的邀请码</button>
                     </div>
                     <!-- /.box -->
@@ -79,8 +76,11 @@
                             <tbody>
                                 {foreach $codes as $code}
                                 <tr>
-                                    <td><b>{$code->id}</b></td>
-                                    <td><a href="/auth/register?code={$code->code}" target="_blank">{$code->code}</a>
+                                    <td>
+                                        <b>{$code->id}</b>
+                                    </td>
+                                    <td>
+                                        <a href="/auth/register?code={$code->code}" target="_blank">{$code->code}</a>
                                     </td>
                                     <td>可用</td>
                                 </tr>
@@ -113,6 +113,4 @@
         })
     })
 
-</script>
-
-{include file='user/footer.tpl'}
+</script> {include file='user/footer.tpl'}

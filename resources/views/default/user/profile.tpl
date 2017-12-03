@@ -7,19 +7,20 @@
             <small>User Profile</small>
         </h1>
     </section>
-    <!-- Main content --><!-- Main content -->
+    <!-- Main content -->
+    <!-- Main content -->
     <section class="content">
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-md-8">
-                                        <button id="getclient" class="btn btn-primary">获取客户端</button>
-                                        <button id="getconfig" class="btn btn-primary">获取配置</button>
-                                        <button id="nodelist" class="btn btn-primary">节点列表</button>
-                                        <button id="trafficrecord" class="btn btn-primary">流量记录</button>
-                                        <button id="changeinfo" class="btn btn-primary">修改资料</button>
-                                        <button id="invitefriend" class="btn btn-primary">邀请好友</button>
+                <button id="getclient" class="btn btn-primary">获取客户端</button>
+                <button id="getconfig" class="btn btn-primary">获取配置</button>
+                <button id="nodelist" class="btn btn-primary">节点列表</button>
+                <button id="trafficrecord" class="btn btn-primary">流量记录</button>
+                <button id="changeinfo" class="btn btn-primary">修改资料</button>
+                <button id="invitefriend" class="btn btn-primary">邀请好友</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <!-- left column -->
@@ -49,5 +50,6 @@
         </div>
     </section>
     <!-- /.content -->
-</div><!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 {include file='user/footer.tpl'}

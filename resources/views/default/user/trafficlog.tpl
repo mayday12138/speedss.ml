@@ -12,17 +12,17 @@
 
     <!-- Main content -->
     <section class="content">
-        
-        <div class="row">
+
+        <!-- <div class="row">
             <div class="col-md-8">
-                                        <button id="getclient" class="btn btn-primary">获取客户端</button>
-                                        <button id="getconfig" class="btn btn-primary">获取配置</button>
-                                        <button id="nodelist" class="btn btn-primary">节点列表</button>
-                                        <button id="trafficrecord" class="btn btn-primary">流量记录</button>
-                                        <button id="changeinfo" class="btn btn-primary">修改资料</button>
-                                        <button id="invitefriend" class="btn btn-primary">邀请好友</button>
+                <button id="getclient" class="btn btn-primary">获取客户端</button>
+                <button id="getconfig" class="btn btn-primary">获取配置</button>
+                <button id="nodelist" class="btn btn-primary">节点列表</button>
+                <button id="trafficrecord" class="btn btn-primary">流量记录</button>
+                <button id="changeinfo" class="btn btn-primary">修改资料</button>
+                <button id="invitefriend" class="btn btn-primary">邀请好友</button>
             </div>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="col-md-10">
@@ -47,23 +47,27 @@
                                 <th>记录时间</th>
                             </tr>
                             {foreach $logs as $log}
-                                <tr>
-                                    <td>#{$log->id}</td>
-                                    <td>{$log->node()->name}</td>
-                                    <td>{$log->rate}</td>
-                                    <td>{$log->totalUsed()}</td>
-                                    <td>{$log->traffic}</td>
-                                    <td>{$log->logTime()}</td>
-                                </tr>
+                            <tr>
+                                <td>#{$log->id}</td>
+                                <td>{$log->node()->name}</td>
+                                <td>{$log->rate}</td>
+                                <td>{$log->totalUsed()}</td>
+                                <td>{$log->traffic}</td>
+                                <td>{$log->logTime()}</td>
+                            </tr>
                             {/foreach}
                         </table>
                         {$logs->render()}
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
             </div>
         </div>
 
-    </section><!-- /.content -->
-</div><!-- /.content-wrapper -->
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
 
 {include file='user/footer.tpl'}

@@ -6,6 +6,9 @@ use App\Models\CheckInLog;
 use App\Models\InviteCode;
 use App\Models\Node;
 use App\Models\TrafficLog;
+use App\Models\Order;
+use App\Models\V2rayNode;
+use App\Models\UserInfo;
 use App\Services\Auth;
 use App\Services\Config;
 use App\Services\DbConfig;
@@ -38,7 +41,60 @@ class UserController extends BaseController
         if ($msg == null) {
             $msg = "在后台修改用户中心公告...";
         }
-        return $this->view()->assign('msg', $msg)->display('user/index.tpl');
+        $v2ray_node_1 = V2rayNode::where("id", 1)->first();
+        $v2ray_node_2 = V2rayNode::where("id", 2)->first();
+
+        // android的二维码 主服
+        $ary['add'] = $v2ray_node_1->address;
+        $ary['ps'] = $v2ray_node_1->address;
+        $ary['port'] = $v2ray_node_1->port;
+        $ary['id'] = $this->user->uuid;
+        $ary['security'] = $v2ray_node_1->security;
+        $ary['aid'] = $v2ray_node_1->alter_id;
+        if ($v2ray_node_1->network == "websocket"){
+            $ary['net'] = "ws";
+        }
+        $ary['host'] = $v2ray_node_1->path;
+        if ($v2ray_node_1->tls == "1"){
+            $ary['tls'] = "tls";
+        }
+        $ary['type'] = $v2ray_node_1->type;
+        $json = json_encode($ary);
+        $v2ray_qr_1_android = "vmess://" . base64_encode($json);
+
+        // android的二维码 备用服
+        $ary2['add'] = $v2ray_node_2->address;
+        $ary2['ps'] = $v2ray_node_2->address;
+        $ary2['port'] = $v2ray_node_2->port;
+        $ary2['id'] = $this->user->uuid;
+        $ary2['security'] = $v2ray_node_2->security;
+        $ary2['aid'] = $v2ray_node_2->alter_id;
+        if ($v2ray_node_2->network == "websocket"){
+            $ary2['net'] = "ws";
+        }
+        $ary2['host'] = $v2ray_node_2->path;
+        if ($v2ray_node_2->tls == "1"){
+            $ary2['tls'] = "tls";
+        }
+        $ary2['type'] = $v2ray_node_2->type;
+        $json2 = json_encode($ary2);
+        $v2ray_qr_2_android = "vmess://" . base64_encode($json2);
+
+        // iOS的二维码 主服
+        // aes-128-cfb:c4a3ffd1-e874-4dac-a522-9ca0058b2156@v2ray-nginx.speedss.ml:443?obfs=websocket&path=/v2ray/&tls=1
+        $v2ray_qr_1_ios = "vmess://" . base64_encode($v2ray_node_1->security . ":" . $this->user->uuid . "@" . $v2ray_node_1->address . ":" . $v2ray_node_1->port) . "?obfs=" . $v2ray_node_1->network . "&path=" . $v2ray_node_1->path . "&tls=" .$v2ray_node_1->tls;
+        $v2ray_qr_2_ios = "vmess://" . base64_encode($v2ray_node_2->security . ":" . $this->user->uuid . "@" . $v2ray_node_2->address . ":" . $v2ray_node_2->port) . "?obfs=" . $v2ray_node_2->network . "&path=" . $v2ray_node_2->path . "&tls=" .$v2ray_node_2->tls;
+
+        $userInfos = UserInfo::where("hidden", 0)->orderBy('id','desc')->get();
+        return $this->view()->assign('v2ray_qr_1_android', $v2ray_qr_1_android)
+                            ->assign('v2ray_qr_2_android', $v2ray_qr_2_android)
+                            ->assign('v2ray_qr_1_ios', $v2ray_qr_1_ios)
+                            ->assign('v2ray_qr_2_ios', $v2ray_qr_2_ios)
+                            ->assign('userInfos', $userInfos)
+                            ->assign('v2ray_node_1', $v2ray_node_1)
+                            ->assign('v2ray_node_2', $v2ray_node_2)
+                            ->assign('msg', $msg)
+                            ->display('user/index.tpl');
     }
 
     public function getclient($request, $response, $args)
@@ -47,6 +103,94 @@ class UserController extends BaseController
         $us1 = $this->getSSURL(2); //us1
         $jp1 = $this->getSSURL(4); //jp1
         return $this->view()->assign('hk1', $hk1)->assign('us1', $us1)->assign('jp1', $jp1)->display('user/getclient.tpl');
+    }
+
+    public function payment($request, $response, $args)
+    {
+        return $this->view()->display('user/payment.tpl');
+    }
+
+    public function paymentHandle($request, $response, $args)
+    {
+        $paymentType = $request->getParam('paymentType');
+        // 如果已经有待付款订单 则更新该订单
+        $order = Order::where('user_id', $this->user->id)->where('order_status','待付款')->first();
+        if ($order != null && $order->count() > 0){
+            // 使用已经产生的订单
+        } else {
+            // 产生订单
+            $order = new Order();
+        }
+        // 如果已经有已完成订单，则在上次完成时间上累加(还没有过期)
+        $completeOrder = Order::where('user_id', $this->user->id)->where('order_status','已完成')->orderBy('id','desc')->first();
+        date_default_timezone_set('Asia/Shanghai');
+        if ($completeOrder != null && $completeOrder->count() > 0 && $completeOrder->payment_date > time()) {
+            $order->user_id = $this->user->id;
+            $order->user_name = $this->user->user_name;
+            $order->user_email = $this->user->email;
+            if ($paymentType == "1month"){
+                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +1 month');
+                $order->payment_day = 30;
+                $order->payment_name = "包月套餐";
+            }
+            if ($paymentType == "6month"){
+                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +6 month');
+                $order->payment_day = 180;
+                $order->payment_name = "半年套餐";
+            }
+            if ($paymentType == "1year"){
+                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +1 year');
+                $order->payment_day = 360;
+                $order->payment_name = "一年套餐";
+            }
+            if ($paymentType == "2year"){
+                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +2 year');
+                $order->payment_day = 720;
+                $order->payment_name = "两年套餐";
+            }
+        } else {
+            // 如果没有已完成的 那就在当前时间上累加
+            // 还有一种情况有完成但是已过期的也是这种模式
+            $order->user_id = $this->user->id;
+            $order->user_name = $this->user->user_name;
+            $order->user_email = $this->user->email;
+            if ($paymentType == "1month"){
+                $order->payment_date = strtotime("+1 month");
+                $order->payment_day = 30;
+                $order->payment_name = "包月套餐";
+            }
+            if ($paymentType == "6month"){
+                $order->payment_date = strtotime("+6 month");
+                $order->payment_day = 180;
+                $order->payment_name = "半年套餐";
+            }
+            if ($paymentType == "1year"){
+                $order->payment_date = strtotime("+1 year");
+                $order->payment_day = 360;
+                $order->payment_name = "一年套餐";
+            }
+            if ($paymentType == "2year"){
+                $order->payment_date = strtotime("+2 year");
+                $order->payment_day = 720;
+                $order->payment_name = "两年套餐";
+            }
+        }
+        
+        if (!$order->save()){
+            $res['ret'] = 0;
+            $res['msg'] = "订单提交失败";
+            return $response->getBody()->write(json_encode($res));
+        } else {
+            $res['ret'] = 1;
+            $res['msg'] = "订单提交成功";
+            return $this->echoJson($response, $res);
+        }
+    }
+
+    public function order($request, $response, $args) 
+    {
+        $orders = Order::where('user_id', '=', $this->user->id)->orderBy('id', 'desc')->get();
+        return $this->view()->assign('orders', $orders)->display('user/order.tpl');
     }
 
     function getSSURL($node)
@@ -125,7 +269,7 @@ class UserController extends BaseController
     {
         //$n = $this->user->invite_num;
         $n = 1;
-	if ($n < 1) {
+	    if ($n < 1) {
             $res['ret'] = 0;
             return $response->getBody()->write(json_encode($res));
         }

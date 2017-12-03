@@ -12,32 +12,34 @@
     <!-- Main content -->
     <section class="content">
 
-        <div class="row">
-                                <div class="col-md-8">
-                                        <button id="getclient" class="btn btn-primary">获取客户端</button>
-                                        <button id="getconfig" class="btn btn-primary">获取配置</button>
-                                        <button id="nodelist" class="btn btn-primary">节点列表</button>
-                                        <button id="trafficrecord" class="btn btn-primary">流量记录</button>
-                                        <button id="changeinfo" class="btn btn-primary">修改资料</button>
-                                        <button id="invitefriend" class="btn btn-primary">邀请好友</button>
-                                </div>
-        </div>
+        <!-- <div class="row">
+            <div class="col-md-8">
+                <button id="getclient" class="btn btn-primary">获取客户端</button>
+                <button id="getconfig" class="btn btn-primary">获取配置</button>
+                <button id="nodelist" class="btn btn-primary">节点列表</button>
+                <button id="trafficrecord" class="btn btn-primary">流量记录</button>
+                <button id="changeinfo" class="btn btn-primary">修改资料</button>
+                <button id="invitefriend" class="btn btn-primary">邀请好友</button>
+            </div>
+        </div> -->
 
-        <div class="callout callout-warning">
-             <p>修改Shadowsocks连接信息系统会有一到两分钟的延迟, 期间ss连接可能会临时中断</p>
-        </div>
+        <!--<div class="callout callout-warning">
+            <p>修改Shadowsocks连接信息系统会有一到两分钟的延迟, 期间ss连接可能会临时中断</p>
+        </div>-->
 
         <div class="row">
             <div class="col-xs-12">
                 <div id="msg-error" class="alert alert-warning alert-dismissable" style="display:none">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4><i class="icon fa fa-warning"></i> 出错了!</h4>
+                    <h4>
+                        <i class="icon fa fa-warning"></i> 出错了!</h4>
 
                     <p id="msg-error-p"></p>
                 </div>
                 <div id="ss-msg-success" class="alert alert-success alert-dismissable" style="display:none">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                    <h4><i class="icon fa fa-info"></i> 修改成功!</h4>
+                    <h4>
+                        <i class="icon fa fa-info"></i> 修改成功!</h4>
 
                     <p id="ss-msg-success-p"></p>
                 </div>
@@ -53,15 +55,16 @@
 
                         <h3 class="box-title">网站登录密码修改</h3>
                     </div>
-                    <!-- /.box-header --><!-- form start -->
+                    <!-- /.box-header -->
+                    <!-- form start -->
 
                     <div class="box-body">
                         <div class="form-horizontal">
 
                             <div id="msg-success" class="alert alert-info alert-dismissable" style="display:none">
-                                <button type="button" class="close" data-dismiss="alert"
-                                        aria-hidden="true">&times;</button>
-                                <h4><i class="icon fa fa-info"></i> Ok!</h4>
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                <h4>
+                                    <i class="icon fa fa-info"></i> Ok!</h4>
 
                                 <p id="msg-success-p"></p>
                             </div>
@@ -101,7 +104,7 @@
                 <!-- /.box -->
             </div>
 
-            <div class="col-md-6">
+            <!--<div class="col-md-6">
 
                 <div class="box box-primary">
                     <div class="box-header">
@@ -109,7 +112,6 @@
 
                         <h3 class="box-title">Shadowsocks连接信息修改</h3>
                     </div>
-                    <!-- /.box-header -->
                     <div class="box-body">
                         <div class="form-horizontal">
                             <div class="form-group">
@@ -131,10 +133,10 @@
                                 <div class="col-sm-9">
                                     <div class="input-group">
                                         <select class="form-control" id="method">
-                                        {foreach $method as $cipher}
-                                           <option value="{$cipher}" {if $user->method==$cipher}selected="selected"{/if} >{$cipher}</option>  
-                                        {/foreach}
-                                        </select>  
+                                            {foreach $method as $cipher}
+                                            <option value="{$cipher}" {if $user->method==$cipher}selected="selected"{/if} >{$cipher}</option>
+                                            {/foreach}
+                                        </select>
                                         <div class="input-group-btn">
                                             <button type="submit" id="method-update" class="btn btn-primary">修改</button>
                                         </div>
@@ -145,16 +147,14 @@
                         </div>
                         <div class="box-footer"></div>
                     </div>
-                    <!-- /.box-body -->
                 </div>
-                <!-- /.box -->
-            </div>
-            <!-- /.col (right) -->
+            </div>-->
 
         </div>
     </section>
     <!-- /.content -->
-</div><!-- /.content-wrapper -->
+</div>
+<!-- /.content-wrapper -->
 
 <script>
     $("#msg-success").hide();
@@ -245,7 +245,6 @@
             })
         })
     })
-</script>
-
+</script> 
 
 {include file='user/footer.tpl'}
