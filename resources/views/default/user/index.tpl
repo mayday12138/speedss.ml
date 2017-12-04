@@ -37,9 +37,9 @@
 		<div class="row">
 			<div class="col-md-10">
 				<div class="callout callout-warning">
-					<p>新用户先查看网页下方连接信息，下载客户端并扫描二维码导入配置
+					<p>新用户先查看网页下方连接信息，下载客户端并扫描二维码导入配置, 也可以手动导入
 						<!--<a href="/user/getclient">获取客户端</a>-->
-						<a href="https://doc.speedss.ml/temp">也可以手动导入 配置教程</a>
+						<a href="https://doc.speedss.ml/temp"> 客户端下载及配置教程</a>
 					</p>
 					<dl class="dl-horizontal">
 						<dt>套餐类型</dt>
