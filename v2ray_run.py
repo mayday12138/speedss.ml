@@ -20,8 +20,6 @@ def main():
             'postman-token': "0c6691db-d363-8c9c-128d-21d76fa1f0f1"
             }
         response = requests.request("GET", url, headers=headers, params=querystring)
-        print(response.text)
-        # response = urllib.urlopen(address + '/mu/users?key=' + key)
         jsonstr = json.loads(response.text)
         printLog("Load json from server success")
         userArray = []
