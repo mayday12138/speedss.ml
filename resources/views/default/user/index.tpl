@@ -37,10 +37,19 @@
 		<div class="row">
 			<div class="col-md-10">
 				<div class="callout callout-warning">
-					<p>新用户先查看网页下方连接信息，下载客户端并扫描二维码导入配置, 也可以手动导入
-						<!--<a href="/user/getclient">获取客户端</a>-->
-						<a href="https://doc.speedss.ml/temp"> 客户端下载及配置教程</a>
+					<p>新用户先下载客户端&nbsp&nbsp
+						<a onclick="javascript:document.getElementById('getclientclick').scrollIntoView()"> 客户端下载及配置教程</a>
 					</p>
+					<div class="table-responsive no-padding">
+						<table class="table table-condensed">
+							{foreach $userInfos as $userInfo}
+							<tr>
+								<td>{date('Y-m-d', strtotime($userInfo->created_at))}</td>
+								<td>{$userInfo->content}</td>
+							</tr>
+							{/foreach}
+						</table>
+					</div>
 					<dl class="dl-horizontal">
 						<dt>套餐类型</dt>
 						<dd>{$user->payment_name}</dd>
@@ -48,6 +57,8 @@
 						<dd>{$user->paymentDate()}</dd>
 						<dt>套餐状态</dt>
 						<dd>{$user->payment_status}</dd>
+						<dt>用户id</dt>
+						<dd>{$user->uuid}</dd>
 					</dl>
 				</div>
 			</div>
@@ -118,6 +129,7 @@
 						<!--<p>单次购买: 10元30G流量, 月底不清零</p>-->
 						<a href="/intro" class="btn btn-primary">产品介绍</a>
 						<a href="/intro#pricing" class="btn btn-primary">价格信息</a>
+
 						<!--<p>包月套餐: 10元50G流量</p>
 							<p>一次性购买半年(现仅需60元)可享每月80G大流量</p>
 							<p>一次性购买全年(现仅需99元)可享全年使用任意节点不限流量</p>-->
@@ -129,6 +141,7 @@
 							<!--<a class="btn btn-primary" href="/downloads/wechatpay.png">微信付款</a>-->
 							<a class="btn btn-primary" href="/user/payment">购买套餐</a>
 						</p>
+						<p>&nbsp</p>
 						<!--<p>微信群(不定时更新邀请):&nbsp&nbsp;
 							<a href="/downloads/wechat.png">二维码</a>
 						</p>-->
@@ -192,7 +205,96 @@
 			</div>
 		</div>-->
 
+
+
+		<!--另起了一行row, 之前box飘到右边了, 原因未知-->
 		<div class="row">
+
+
+			<!--<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header">
+						<i class="fa fa-pencil"></i>
+
+						<h3 class="box-title">签到获取流量</h3>
+					</div>
+					<div class="box-body">
+						<p> 每{$config['checkinTime']}小时可以签到一次。</p>
+
+						<p>上次签到时间：
+							<code>{$user->lastCheckInTime()}</code>
+						</p>
+						{if $user->isAbleToCheckin() }
+						<p id="checkin-btn">
+							<button id="checkin" class="btn btn-success  btn-flat">签到</button>
+						</p>
+						{else}
+						<p>
+							<a class="btn btn-success btn-flat disabled" href="#">不能签到</a>
+						</p>
+						{/if}
+						<p id="checkin-msg"></p>
+					</div>
+				</div>
+			</div>-->
+
+			<div class="col-md-12" id="getclientclick">
+				<div class="box box-primary">
+					<div class="box-header">
+						<i class="fa fa-bullhorn"></i>
+
+						<h3 class="box-title">客户端下载</h3>
+					</div>
+					<div class="box-body table-responsive no-padding">
+						<table class="table table-hover">
+							<tr>
+								<td>
+									<p>Android客户端&nbsp&nbsp
+										<a class="btn btn-primary" href="https://github.com/leslieee/SpeedssDownloadFile/raw/master/v2ray_android_0.1.8.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
+									</p>
+									<p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p>
+
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Windows客户端&nbsp&nbsp
+										<a class="btn btn-primary" href="/user/getwinzip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+									</p>
+									<p>下载后解包打开v2rayN.exe即可（如果报毒选择信任，关闭其他代理软件，确保运行正常）如有问题，可以远程协助，
+										<a href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a>
+									</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Mac客户端&nbsp&nbsp
+										<a class="btn btn-primary" href="https://github.com/leslieee/SpeedssDownloadFile/raw/master/V2RayX.app.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+									</p>
+									<p>下载后需手动填写配置信息
+										<a href="https://doc.speedss.ml/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>iOS客户端&nbsp&nbsp
+										<a class="btn btn-primary" href="https://itunes.apple.com/cn/app/shadowray/id1283082051?mt=8" target="_blank">点击查看</a>
+									</p>
+									<p>iOS用户请在App Store搜索下载"shadowray"(需要付费，12元)</p>
+									<p>进入后点击no server->scan QR Code 然后扫描下方iOS二维码导入配置，返回点击火箭图标，变为鲜绿色为连接成功</p>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row" id="qrcodebar">
 			<div class="col-xs-6 col-md-3">
 				<p>Android 主服务器</p>
 				<div id="v2ray-qr-1-android">
@@ -218,74 +320,6 @@
 				</div>
 			</div>
 		</div>
-
-		<!--另起了一行row, 之前box飘到右边了, 原因未知-->
-		<!--<div class="row">
-
-
-			<div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header">
-						<i class="fa fa-pencil"></i>
-
-						<h3 class="box-title">签到获取流量</h3>
-					</div>
-					<div class="box-body">
-						<p> 每{$config['checkinTime']}小时可以签到一次。</p>
-
-						<p>上次签到时间：
-							<code>{$user->lastCheckInTime()}</code>
-						</p>
-						{if $user->isAbleToCheckin() }
-						<p id="checkin-btn">
-							<button id="checkin" class="btn btn-success  btn-flat">签到</button>
-						</p>
-						{else}
-						<p>
-							<a class="btn btn-success btn-flat disabled" href="#">不能签到</a>
-						</p>
-						{/if}
-						<p id="checkin-msg"></p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header">
-						<i class="fa fa-bullhorn"></i>
-
-						<h3 class="box-title">客户端下载</h3>
-					</div>
-					<div class="box-body">
-						<p>Android客户端&nbsp&nbsp
-							<a href="/downloads/com.github.shadowsocks.apk">点击下载</a>
-						</p>
-						<p>Windows客户端&nbsp&nbsp
-							<a href="/downloads/Shadowsocks-win-2.5.6.zip">点击下载</a>
-						</p>
-						<p>Mac客户端&nbsp&nbsp
-							<a href="/downloads/ShadowsocksX-2.6.3.dmg">点击下载</a>
-						</p>
-						<p>iOS用户请在App Store搜索下载"Wingy"&nbsp&nbsp
-							<a href="https://itunes.apple.com/cn/app/wingy-http-s-socks5-proxy-utility/id1178584911?mt=8"
-							 target="_blank">点击查看</a>
-						</p>
-						<p>Wingy国区已下架, 请下载ipa安装包, 用iTunes安装
-							<a href="/downloads/wingy.ipa">点击下载</a>
-						</p>
-						<p>Linux用户请参考安装手册进行安装</p>
-						<p>安装手册(包含各个平台)&nbsp&nbsp
-							<a href="/downloads/SpeedSS_Installation_Manual.pdf">快速查看</a>&nbsp&nbsp
-							<a href="/downloads/SpeedSS_Installation_Manual.docx">点击下载</a>
-						</p>
-						<p>安装手册配套软件包&nbsp&nbsp
-							<a href="/downloads/SpeedSS_Installation_Manual_Package.zip">点击下载</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>-->
 
 
 		<!-- /.row -->

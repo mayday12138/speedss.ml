@@ -193,6 +193,45 @@ class UserController extends BaseController
         return $this->view()->assign('orders', $orders)->display('user/order.tpl');
     }
 
+    public function getWinZip($request, $response, $args)
+    {
+        // 从v2ray_node读取配置
+        $nodes = v2rayNode::all();
+        // 读取配置文件
+        $configStr = file_get_contents("./downloads/v2rayN/guiNConfig.json");
+        $configJson = json_decode($configStr, true);
+        // unset($configJson["vmess"]);
+        $configJson["vmess"] = [];
+        foreach ($nodes as $node) {
+            $addNode["address"] = $node->address;
+            $addNode["port"] = (int)$node->port;
+            $addNode["id"] = $this->user->uuid;
+            $addNode["alterId"] = (int)$node->alter_id;
+            $addNode["security"] = $node->security;
+            $addNode["network"] = $node->getWebsocketAlias();
+            $addNode["remarks"] = $node->address;
+            $addNode["headerType"] = $node->type;
+            $addNode["requestHost"] = $node->path;
+            $addNode["tls"] = $node->getTlsAlias();
+            array_push($configJson["vmess"], $addNode);
+        }
+        // var_dump($configJson);
+        $fp = fopen("./downloads/v2rayN/guiNConfig.json", 'w');
+        if ($fp) {
+            fwrite($fp, json_encode($configJson, JSON_PRETTY_PRINT|JSON_UNESCAPED_SLASHES));
+            fclose($fp);
+            // 修改配置
+            // 打包
+            echo shell_exec("tar -czvf ./downloads/v2rayN_win.zip -C ./downloads/v2rayN .");
+            $newResponse = $response->withStatus(302)->withHeader('Location', "/downloads/v2rayN_win.zip");
+            return $newResponse;
+        } else {
+            echo "permission denied.";
+        }
+        
+        
+    }
+
     function getSSURL($node)
     {
         $node = Node::find($node);
