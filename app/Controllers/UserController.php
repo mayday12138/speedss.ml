@@ -212,7 +212,7 @@ class UserController extends BaseController
             $addNode["remarks"] = $node->address;
             $addNode["headerType"] = $node->type;
             $addNode["requestHost"] = $node->path;
-            $addNode["tls"] = $node->getTlsAlias();
+            $addNode["streamSecurity"] = $node->getTlsAlias();
             array_push($configJson["vmess"], $addNode);
         }
         // var_dump($configJson);
@@ -222,7 +222,8 @@ class UserController extends BaseController
             fclose($fp);
             // 修改配置
             // 打包
-            echo shell_exec("tar -czvf ./downloads/v2rayN_win.zip -C ./downloads/v2rayN .");
+            // echo shell_exec("tar -czvf ./downloads/v2rayN_win.zip -C ./downloads/v2rayN .");
+            echo shell_exec("cd ./downloads;rm -f v2rayN_win.zip;zip -r v2rayN_win.zip ./v2rayN;cd ..");
             $newResponse = $response->withStatus(302)->withHeader('Location', "/downloads/v2rayN_win.zip");
             return $newResponse;
         } else {
