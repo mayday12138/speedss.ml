@@ -284,6 +284,7 @@
 								<td>
 									<p>iOS客户端&nbsp&nbsp
 										<a class="btn btn-primary" href="https://itunes.apple.com/cn/app/shadowray/id1283082051?mt=8" target="_blank">点击查看</a>
+										<a class="btn btn-primary" href="/user/watchvideo">查看操作视频</a>
 									</p>
 									<p>iOS用户请在App Store搜索下载"shadowray"(需要付费，12元)</p>
 									<p>进入后点击no server->scan QR Code 然后扫描下方iOS二维码导入配置，返回点击火箭图标，变为鲜绿色为连接成功</p>

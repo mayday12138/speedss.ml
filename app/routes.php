@@ -100,6 +100,7 @@ $app->group('/user', function () {
     $this->post('/payment', 'App\Controllers\UserController:paymentHandle');
     $this->get('/order', 'App\Controllers\UserController:order');
     $this->get('/getwinzip', 'App\Controllers\UserController:getWinZip');
+    $this->get('/watchvideo', 'App\Controllers\UserController:watchVideo');
 
 
 })->add(new Auth());

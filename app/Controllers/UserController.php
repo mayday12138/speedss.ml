@@ -9,6 +9,7 @@ use App\Models\TrafficLog;
 use App\Models\Order;
 use App\Models\V2rayNode;
 use App\Models\UserInfo;
+// use App\Models\Plan;
 use App\Services\Auth;
 use App\Services\Config;
 use App\Services\DbConfig;
@@ -107,7 +108,9 @@ class UserController extends BaseController
 
     public function payment($request, $response, $args)
     {
-        return $this->view()->display('user/payment.tpl');
+        // $plans = Plan::orderBy('id','DESC')->get();
+        // return $this->view()->assign('plans',$plans)->display('user/payment.tpl');
+        return $this->view()->display('user/payment.tpl');        
     }
 
     public function paymentHandle($request, $response, $args)
@@ -229,8 +232,10 @@ class UserController extends BaseController
         } else {
             echo "permission denied.";
         }
-        
-        
+    }
+
+    function watchVideo($request, $response, $args) {
+        return $this->view()->display('user/watchvideo.tpl');
     }
 
     function getSSURL($node)
