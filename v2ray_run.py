@@ -20,7 +20,12 @@ def main():
             'postman-token': "0c6691db-d363-8c9c-128d-21d76fa1f0f1"
             }
         response = requests.request("GET", url, headers=headers, params=querystring)
-        jsonstr = json.loads(response.text)
+        try:
+            jsonstr = json.loads(response.text)
+        except:
+            printLog("Server data error, try again after %d seconds" % sleepTime)
+            time.sleep(sleepTime)
+            continue
         printLog("Load json from server success")
         userArray = []
         #遍历拿到所有用户的passwd字段
