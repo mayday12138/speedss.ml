@@ -239,6 +239,26 @@ class UserController extends BaseController
         return $this->view()->display('user/watchvideo.tpl');
     }
 
+    function getServerConfig($request, $response, $args) {
+        // 从v2ray_node读取配置
+        $nodes = v2rayNode::all();
+        $configJson = [];
+        foreach ($nodes as $node) {
+            $addNode["address"] = $node->address;
+            $addNode["port"] = (int)$node->port;
+            $addNode["id"] = $this->user->uuid;
+            $addNode["alterId"] = (int)$node->alter_id;
+            $addNode["security"] = $node->security;
+            $addNode["network"] = $node->getWebsocketAlias();
+            $addNode["remarks"] = $node->address;
+            $addNode["headerType"] = $node->type;
+            $addNode["requestHost"] = $node->path;
+            $addNode["streamSecurity"] = $node->getTlsAlias();
+            array_push($configJson, $addNode);
+        }
+        return $this->echoJson($response, $configJson);
+    }
+
     function getSSURL($node)
     {
         $node = Node::find($node);
