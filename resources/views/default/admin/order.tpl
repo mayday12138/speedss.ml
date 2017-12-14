@@ -27,6 +27,7 @@
                                 <th>套餐类型</th>
                                 <th>订单状态</th>
                                 <th>创建时间</th>
+                                <th>备注</th>
                             </tr>
                             {foreach $orders as $order}
                             <tr>
@@ -37,7 +38,8 @@
                                 <td>{date('Y-m-d H:i:s', $order->payment_date)}</td>
                                 <td>{$order->payment_name}</td>
                                 <td>{$order->order_status}</td>
-                                <td>{$order->created_time}</td>                              
+                                <td>{$order->created_time}</td>
+                                <td>{$order->remarks}</td>                              
                                 <td>
                                     {if $order->getOrderStatus()==0}
                                     <a class="btn btn-primary btn-sm" value="{$order->id}" href="/admin/order/{$order->id}/pass">通过</a>
