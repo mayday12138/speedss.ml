@@ -227,7 +227,8 @@ class UserController extends BaseController
             // 打包
             // echo shell_exec("tar -czvf ./downloads/v2rayN_win.zip -C ./downloads/v2rayN .");
             echo shell_exec("cd ./downloads;rm -f v2rayN_win.zip;zip -r v2rayN_win.zip ./v2rayN;cd ..");
-            $newResponse = $response->withStatus(302)->withHeader('Location', "/downloads/v2rayN_win.zip");
+            echo shell_exec("/bin/cp ./downloads/v2rayN_win.zip ./downloads/upload/v2rayN_win.zip");
+            $newResponse = $response->withStatus(302)->withHeader('Location', "https://download.speedss.ml/v2rayN_win.zip");
             return $newResponse;
         } else {
             echo "permission denied.";

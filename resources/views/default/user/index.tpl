@@ -250,7 +250,7 @@
 							<tr>
 								<td>
 									<p>Android客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://github.com/leslieee/SpeedssDownloadFile/raw/master/v2ray_android_0.1.8.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://download.speedss.ml/v2ray_android_0.1.8.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p>
@@ -272,7 +272,7 @@
 							<tr>
 								<td>
 									<p>Mac客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://github.com/leslieee/SpeedssDownloadFile/raw/master/V2RayX.app.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://download.speedss.ml/V2RayX.app.zip">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
