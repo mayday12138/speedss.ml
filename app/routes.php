@@ -101,7 +101,7 @@ $app->group('/user', function () {
     $this->get('/order', 'App\Controllers\UserController:order');
     $this->get('/getwinzip', 'App\Controllers\UserController:getWinZip');
     $this->get('/watchvideo', 'App\Controllers\UserController:watchVideo');
-
+    $this->get('/getserverconfig', 'App\Controllers\UserController:getServerConfig');
 
 })->add(new Auth());
 
