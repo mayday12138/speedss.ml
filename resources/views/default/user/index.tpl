@@ -6,6 +6,7 @@
 	<section class="content-header">
 		<h1>
 			用户中心
+			<a class="btn btn-primary" href="https://download.speedss.ml/main_page_english_version.png">English Language</a>			
 			<small>User Center</small>
 		</h1>
 	</section>
@@ -244,6 +245,7 @@
 						<i class="fa fa-bullhorn"></i>
 
 						<h3 class="box-title">客户端下载</h3>
+						<a class="btn btn-primary" href="https://download.speedss.ml/client_download_english_version.png">English Language</a>
 					</div>
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
@@ -287,6 +289,7 @@
 										<a class="btn btn-primary" href="/user/watchvideo">查看操作视频</a>
 									</p>
 									<p>iOS用户请在App Store搜索下载"shadowray"(需要付费，12元)</p>
+									<p>也可以找管理员索要已经付费过的苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
 									<p>进入后点击no server->scan QR Code 然后扫描下方iOS二维码导入配置，返回点击火箭图标，变为鲜绿色为连接成功</p>
 								</td>
 							</tr>
