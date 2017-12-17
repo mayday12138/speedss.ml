@@ -8,12 +8,15 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 
 use App\Models\InviteCode;
+use App\Models\V2rayNode;
+use App\Models\User;
 use App\Services\Auth;
 use App\Services\Config;
 use App\Services\DbConfig;
 use App\Services\Logger;
 use App\Utils\Check;
 use App\Utils\Http;
+use App\Utils\Hash;
 
 /**
  *  HomeController
@@ -37,6 +40,83 @@ class HomeController extends BaseController
     public function configclient()
     {
         return $this->view()->display('configclient.tpl');
+    }
+
+    public function getServerConfig($request, $response, $args)
+    {
+        $email = $request->getParam('email');
+        $email = strtolower($email);
+        $passwd = $request->getParam('passwd');
+        $user = User::where('email', '=', $email)->first();
+        if ($user == null) {
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $this->echoJson($response, $res);
+        }
+        if (!Hash::checkPassword($user->pass, $passwd)) {
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $this->echoJson($response, $res);
+        }
+        // 从v2ray_node读取配置
+        $nodes = v2rayNode::all();
+        $configJson = [];
+        foreach ($nodes as $node) {
+            $addNode["address"] = $node->address;
+            $addNode["port"] = (int)$node->port;
+            $addNode["id"] = $user->uuid;
+            $addNode["alterId"] = (int)$node->alter_id;
+            $addNode["security"] = $node->security;
+            $addNode["network"] = $node->getWebsocketAlias();
+            $addNode["remarks"] = $node->address;
+            $addNode["headerType"] = $node->type;
+            $addNode["requestHost"] = $node->path;
+            $addNode["streamSecurity"] = $node->getTlsAlias();
+            array_push($configJson, $addNode);
+        }
+        return $this->echoJson($response, $configJson);
+    }
+
+    public function getAndroidServerConfig($request, $response, $args)
+    {
+        $email = $request->getParam('email');
+        $email = strtolower($email);
+        $passwd = $request->getParam('passwd');
+        $user = User::where('email', '=', $email)->first();
+        if ($user == null) {
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $this->echoJson($response, $res);
+        }
+        if (!Hash::checkPassword($user->pass, $passwd)) {
+            $res['ret'] = 0;
+            $res['msg'] = "邮箱或者密码错误";
+            return $this->echoJson($response, $res);
+        }
+        // 从v2ray_node读取配置
+        $nodes = v2rayNode::all();
+        $configJson = [];
+        foreach ($nodes as $node) {
+            $addNode["add"] = $node->address;
+            if ($node->id == 1) {
+                $addNode["ps"] = "主服务器";
+            } else {
+                $addNode["ps"] = "备用服务器";
+            }
+            $addNode["port"] = $node->port;
+            $addNode["id"] = $user->uuid;
+            $addNode["aid"] = $node->alter_id;
+            $addNode["net"] = $node->getWebsocketAlias();
+            $addNode["host"] = $node->path;
+            $addNode["tls"] = $node->getTlsAlias();
+            $addNode["type"] = $node->type;
+            $addNodeStr = json_encode($addNode);
+            $addNodeStr = base64_encode($addNodeStr);
+            $addNodeStr = "vmess://" . $addNodeStr;
+            array_push($configJson, $addNodeStr);
+        }
+        // return $this->echoJson($response, $configJson);
+        echo json_encode($configJson, JSON_UNESCAPED_SLASHES);
     }
 
     public function code()
