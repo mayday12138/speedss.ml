@@ -252,11 +252,11 @@
 							<tr>
 								<td>
 									<p>Android客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.ml/v2ray_android_0.1.8.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://download.speedss.ml/v2rayNG.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
 									</p>
-									<p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p>
-
+									<!-- <p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p> -->
+									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
 								</td>
 							</tr>
 							<tr>
