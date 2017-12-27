@@ -141,19 +141,18 @@
                                         </div>
                                     </div>-->
                                     <div class="form-group">
-                                        <label class="col-sm-3 control-label">套餐时间</label>
+                                        <label class="col-sm-3 control-label">指定有效期至</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="payment_day" type="text"
-                                                   value="{$user->payment_day}">
+                                            <input class="form-control" id="payment_date" type="text">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-3 control-label">套餐有效期至</label>
 
                                         <div class="col-sm-9">
-                                            <input class="form-control" id="payment_date" type="text"
-                                                   value="{$user->paymentDate()}" readonly>
+                                            <input class="form-control" type="text"
+                                                   value="{$user->paymentDate()}">
                                         </div>
                                     </div>
                                 </fieldset>
@@ -212,7 +211,7 @@
                     enable: $("#enable").val(),
                     is_admin: $("#is_admin").val(),
                     ref_by: $("#ref_by").val(),
-                    payment_day: $("#payment_day").val()
+                    payment_date: $("#payment_date").val()
                 },
                 success: function (data) {
                     if (data.ret) {

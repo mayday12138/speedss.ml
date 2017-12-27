@@ -39,12 +39,17 @@
                                 <td>{$order->payment_name}</td>
                                 <td>{$order->order_status}</td>
                                 <td>{$order->created_time}</td>
-                                <td>{$order->remarks}</td>                              
+                                {if $order->remarks == ""}
+                                    <td><a class="btn btn-primary btn-sm" value="{$order->id}" href="/admin/order/{$order->id}/orderremarks">添加备注</a></td>
+                                {else}
+                                    <td>{$order->remarks}</td>  
+                                {/if}                            
                                 <td>
+                                    
                                     {if $order->getOrderStatus()==0}
-                                    <a class="btn btn-primary btn-sm" value="{$order->id}" href="/admin/order/{$order->id}/pass">通过</a>
+                                        <a class="btn btn-primary btn-sm" value="{$order->id}" href="/admin/order/{$order->id}/pass">通过</a>
                                     {else if $order->getOrderStatus()==1}
-                                    <a class="btn btn-primary btn-sm" disabled="disabled" value="{$order->id}" href="/admin/order/{$order->id}/pass">已通过</a>
+                                        <a class="btn btn-primary btn-sm" disabled="disabled" value="{$order->id}" href="/admin/order/{$order->id}/pass">已通过</a>
                                     {/if}                                    
                                 </td>
                             </tr>

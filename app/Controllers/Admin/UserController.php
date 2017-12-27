@@ -48,6 +48,29 @@ class UserController extends AdminController
         return $newResponse;
     }
 
+    public function orderRemarks($request, $response, $args)
+    {
+        $id = $args['id'];
+        $order = Order::find($id);
+        return $this->view()->assign('order', $order)->display('admin/orderremarks.tpl');
+    }
+
+    public function orderRemarksAdd($request, $response, $args)
+    {
+        $id = $request->getParam('id');
+        $content = $request->getParam('content');
+        $order = Order::find($id);
+        $order->remarks = $content;
+        if (!$order->save()) {
+            $rs['ret'] = 0;
+            $rs['msg'] = "添加失败";
+            return $response->getBody()->write(json_encode($rs));
+        }
+        $rs['ret'] = 1;
+        $rs['msg'] = "添加成功";
+        return $response->getBody()->write(json_encode($rs));
+    }
+
     public function userInfo($request, $response, $args)
     {
         $pageNum = 1;
@@ -159,11 +182,14 @@ class UserController extends AdminController
         $user->enable = $request->getParam('enable');
         $user->is_admin = $request->getParam('is_admin');
         $user->ref_by = $request->getParam('ref_by');
-        $user->payment_day = $request->getParam('payment_day');
         // 时间戳的逻辑就是当前时间戳加上增加天数换算的时间戳
-        $user->payment_date = time()+($request->getParam('payment_day'))*3600*24;
-        $user->payment_day = $request->getParam('payment_day');
-        $user->payment_name = $request->getParam('payment_day') . "天套餐";
+        // $user->payment_date = time()+($request->getParam('payment_day'))*3600*24;
+        // $user->payment_day = $request->getParam('payment_day');
+        // $user->payment_name = $request->getParam('payment_day') . "天套餐";
+        // 指定有效期到指定日期
+        date_default_timezone_set("Asia/Shanghai");
+        $user->payment_date = strtotime($request->getParam('payment_date'));
+        
         if (!$user->save()) {
             $rs['ret'] = 0;
             $rs['msg'] = "修改失败";

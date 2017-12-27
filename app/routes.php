@@ -154,6 +154,8 @@ $app->group('/admin', function () {
     // Order
     $this->get('/order', 'App\Controllers\Admin\UserController:order');
     $this->get('/order/{id}/pass', 'App\Controllers\Admin\UserController:orderPass');
+    $this->get('/order/{id}/orderremarks', 'App\Controllers\Admin\UserController:orderRemarks');
+    $this->post('/order/orderremarks/add', 'App\Controllers\Admin\UserController:orderRemarksAdd');
 
     // userinfo
     $this->get('/userinfo', 'App\Controllers\Admin\UserController:userInfo');
