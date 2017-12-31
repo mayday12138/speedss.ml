@@ -87,6 +87,15 @@ class UserController extends BaseController
         $v2ray_qr_2_ios = "vmess://" . base64_encode($v2ray_node_2->security . ":" . $this->user->uuid . "@" . $v2ray_node_2->address . ":" . $v2ray_node_2->port) . "?obfs=" . $v2ray_node_2->network . "&path=" . $v2ray_node_2->path . "&tls=" .$v2ray_node_2->tls;
 
         $userInfos = UserInfo::where("hidden", 0)->orderBy('id','desc')->get();
+        // 判断当前是否已过期
+        date_default_timezone_set('Asia/Shanghai');
+        if ($this->user->payment_date > time()) {
+            $this->user->payment_status = "有效";
+            $this->user->save();
+        } else {
+            $this->user->payment_status = "已过期";
+            $this->user->save();
+        }
         return $this->view()->assign('v2ray_qr_1_android', $v2ray_qr_1_android)
                             ->assign('v2ray_qr_2_android', $v2ray_qr_2_android)
                             ->assign('v2ray_qr_1_ios', $v2ray_qr_1_ios)
