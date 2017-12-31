@@ -6,11 +6,12 @@
         <a href="../"><b>{$config['appName']}</b></a>
     </div>-->
 
+
         <div class="register-box-body" style="width:380px;">
             <p class="login-box-msg">注册，然后变成一只猫。
                 <a class="btn btn-primary" href="https://download.speedss.ml/register_english_version.png">English Language</a>
             </p>
-            			            
+
 
             <div class="form-group has-feedback">
                 <input type="text" id="name" class="form-control" placeholder="昵称" />
@@ -101,8 +102,31 @@
 
     });
 </script> -->
+
+
     <script>
         $(document).ready(function () {
+
+            String.prototype.hashCode = function () {
+                var hash = 0, i, chr;
+                if (this.length === 0) return hash;
+                for (i = 0; i < this.length; i++) {
+                    chr = this.charCodeAt(i);
+                    hash = ((hash << 5) - hash) + chr;
+                    hash |= 0; // Convert to 32bit integer
+                }
+                return String(hash);
+            };
+
+            function getFingerprint() {
+                var canvas = document.createElement('canvas');
+                var ctx = canvas.getContext('2d');
+                ctx.fillStyle = "#FF0000";
+                ctx.fillRect(0, 0, 8, 10);
+                return canvas.toDataURL().hashCode();
+                
+            }
+
             function register() {
                 if ($("#passwd").val() != $("#repasswd").val()) {
                     $("#msg-success").hide(10);
@@ -110,6 +134,7 @@
                     $("#msg-error-p").html("两次密码输入不符");
                     return;
                 }
+
                 $.ajax({
                     type: "POST",
                     url: "/auth/register",
@@ -121,9 +146,9 @@
                         repasswd: $("#adName").val(),
                         adName: $("adName").val(),
                         code: $("#code").val(),
-
                         verifycode: $("#verifycode").val(),
-                        agree: $("#agree").val()
+                        agree: $("#agree").val(),
+                        fingerprint: getFingerprint()
                     },
                     success: function (data) {
                         if (data.ret == 1) {
