@@ -88,6 +88,7 @@
     <script src="/assets/public/js/jquery.min.js"></script>
     <!-- Bootstrap 3.3.2 JS -->
     <script src="/assets/public/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/public/js/client.min.js" type="text/javascript"></script>
     <!-- iCheck -->
     <!--<script src="/assets/public/js/icheck.min.js" type="text/javascript"></script>
 <script>
@@ -107,24 +108,10 @@
     <script>
         $(document).ready(function () {
 
-            String.prototype.hashCode = function () {
-                var hash = 0, i, chr;
-                if (this.length === 0) return hash;
-                for (i = 0; i < this.length; i++) {
-                    chr = this.charCodeAt(i);
-                    hash = ((hash << 5) - hash) + chr;
-                    hash |= 0; // Convert to 32bit integer
-                }
-                return String(hash);
-            };
-
             function getFingerprint() {
-                var canvas = document.createElement('canvas');
-                var ctx = canvas.getContext('2d');
-                ctx.fillStyle = "#FF0000";
-                ctx.fillRect(0, 0, 8, 10);
-                return canvas.toDataURL().hashCode();
-                
+                // Create a new ClientJS object
+                var client = new ClientJS();
+                return String(client.getFingerprint());
             }
 
             function register() {
