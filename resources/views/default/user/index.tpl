@@ -299,25 +299,25 @@
 			</div>
 		</div>
 		<div class="row" id="qrcodebar">
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-8 col-md-3">
 				<p>Android 主服务器</p>
 				<div id="v2ray-qr-1-android">
 
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-8 col-md-3">
 				<p>Android 备用服务器</p>
 				<div id="v2ray-qr-2-android">
 
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-8 col-md-3">
 				<p>iOS 主服务器</p>
 				<div id="v2ray-qr-1-ios">
 
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-3">
+			<div class="col-xs-8 col-md-3">
 				<p>iOS 备用服务器</p>
 				<div id="v2ray-qr-2-ios">
 
