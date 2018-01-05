@@ -1,7 +1,6 @@
 {include file='user/main.tpl'}
 
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             购买套餐
@@ -9,23 +8,7 @@
         </h1>
     </section>
 
-    <!-- Main content -->
     <section class="content">
-
-        <!-- <div class="row">
-            <div class="col-md-8">
-                <button id="getclient" class="btn btn-primary">获取客户端</button>
-                <button id="getconfig" class="btn btn-primary">获取配置</button>
-                <button id="nodelist" class="btn btn-primary">节点列表</button>
-                <button id="trafficrecord" class="btn btn-primary">流量记录</button>
-                <button id="changeinfo" class="btn btn-primary">修改资料</button>
-                <button id="invitefriend" class="btn btn-primary">邀请好友</button>
-            </div>
-        </div> -->
-
-        <!-- <div class="callout callout-warning">
-            <p>修改Shadowsocks连接信息系统会有一到两分钟的延迟, 期间ss连接可能会临时中断</p>
-        </div> -->
 
         <div class="row">
             <div class="col-xs-12">
@@ -54,8 +37,42 @@
                         <p></p>
                     </div>
 
-                    <div class="box-body">
-                        <div class="form-horizontal">
+                    <div class="box-body table-responsive no-padding">
+                        <div id="msg-success" class="alert alert-info alert-dismissable" style="display:none">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h4>
+                                <i class="icon fa fa-info"></i> Ok!</h4>
+
+                            <p id="msg-success-p"></p>
+                        </div>
+                        <table class="table table-hover">
+                            <tr>
+                                <td></td>
+                                <td>套餐</td>
+                                <td>价格</td>
+                                <td>赠送</td>
+                                <td>设备数量</td>
+                                <td>流量限制</td>
+                                
+                                <td>
+                                    <td>
+                            </tr>
+                            {foreach $plans as $plan}
+                            <tr>
+                                <td></td>
+                                <td>{$plan->plan_name}</td>
+                                <td>{$plan->plan_price}</td>
+                                <td>{$plan->plan_detail}</td>
+                                <td>{$plan->plan_client}</td>
+                                <td>{$plan->plan_flow}</td>
+                                
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="/user/payment/{$plan->id}">提交订单</a>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </table>
+                        <!--<div class="form-horizontal">
 
                             <div id="msg-success" class="alert alert-info alert-dismissable" style="display:none">
                                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -70,21 +87,20 @@
 
                                 <div class="col-sm-9">
                                     <select class="form-control" id="paymentType" style="width: 60%;">
-                                        <!--<option value="1month">包月 15</option>-->
+                                        <option value="1month">包月 15</option>
                                         <option value="6month">半年 60元</option>
                                         <option value="1year">一年 120元</option>
                                         <option value="2year">两年 199元</option>
                                     </select>
                                 </div>
                             </div>
-
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="box-footer">
                         <div class="row">
                             <div class="col-xs-12 col-sm-10 col-md-8 text-center">
-                                <a id="payment" class="btn btn-primary" style="width: 20%;">提交</a>
+                                <!-- <a id="payment" class="btn btn-primary" style="width: 20%;">提交</a> -->
                                 <a class="btn btn-primary" href="/user/order">查看我的订单</a>
                             </div>
                         </div>

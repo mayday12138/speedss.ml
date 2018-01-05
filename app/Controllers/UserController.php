@@ -9,7 +9,7 @@ use App\Models\TrafficLog;
 use App\Models\Order;
 use App\Models\V2rayNode;
 use App\Models\UserInfo;
-// use App\Models\Plan;
+use App\Models\Plan;
 use App\Services\Auth;
 use App\Services\Config;
 use App\Services\DbConfig;
@@ -80,13 +80,14 @@ class UserController extends BaseController
         $ary2['type'] = $v2ray_node_2->type;
         $json2 = json_encode($ary2);
         $v2ray_qr_2_android = "vmess://" . base64_encode($json2);
-
         // iOS的二维码 主服
         // aes-128-cfb:c4a3ffd1-e874-4dac-a522-9ca0058b2156@v2ray-nginx.speedss.ml:443?obfs=websocket&path=/v2ray/&tls=1
         $v2ray_qr_1_ios = "vmess://" . base64_encode($v2ray_node_1->security . ":" . $this->user->uuid . "@" . $v2ray_node_1->address . ":" . $v2ray_node_1->port) . "?obfs=" . $v2ray_node_1->network . "&path=" . $v2ray_node_1->path . "&tls=" .$v2ray_node_1->tls;
         $v2ray_qr_2_ios = "vmess://" . base64_encode($v2ray_node_2->security . ":" . $this->user->uuid . "@" . $v2ray_node_2->address . ":" . $v2ray_node_2->port) . "?obfs=" . $v2ray_node_2->network . "&path=" . $v2ray_node_2->path . "&tls=" .$v2ray_node_2->tls;
-
+        // 公告信息
         $userInfos = UserInfo::where("hidden", 0)->orderBy('id','desc')->get();
+        // 价格表
+        $plans = Plan::orderBy('id','DESC')->get();
         // 判断当前是否已过期
         date_default_timezone_set('Asia/Shanghai');
         if ($this->user->payment_date > time()) {
@@ -104,6 +105,7 @@ class UserController extends BaseController
                             ->assign('v2ray_node_1', $v2ray_node_1)
                             ->assign('v2ray_node_2', $v2ray_node_2)
                             ->assign('msg', $msg)
+                            ->assign('plans',$plans)
                             ->display('user/index.tpl');
     }
 
@@ -117,14 +119,16 @@ class UserController extends BaseController
 
     public function payment($request, $response, $args)
     {
-        // $plans = Plan::orderBy('id','DESC')->get();
-        // return $this->view()->assign('plans',$plans)->display('user/payment.tpl');
-        return $this->view()->display('user/payment.tpl');        
+        $plans = Plan::orderBy('id','DESC')->get();
+        return $this->view()->assign('plans',$plans)->display('user/payment.tpl');
     }
 
-    public function paymentHandle($request, $response, $args)
+    public function paymentHandleById($request, $response, $args)
     {
-        $paymentType = $request->getParam('paymentType');
+        $id = $args['id'];
+        $Plan = Plan::find($id);
+
+        // $paymentType = $request->getParam('paymentType');
         // 如果已经有待付款订单 则更新该订单
         $order = Order::where('user_id', $this->user->id)->where('order_status','待付款')->first();
         if ($order != null && $order->count() > 0){
@@ -140,52 +144,16 @@ class UserController extends BaseController
             $order->user_id = $this->user->id;
             $order->user_name = $this->user->user_name;
             $order->user_email = $this->user->email;
-            if ($paymentType == "1month"){
-                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +1 month');
-                $order->payment_day = 30;
-                $order->payment_name = "包月套餐";
-            }
-            if ($paymentType == "6month"){
-                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +6 month');
-                $order->payment_day = 180;
-                $order->payment_name = "半年套餐";
-            }
-            if ($paymentType == "1year"){
-                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +1 year');
-                $order->payment_day = 360;
-                $order->payment_name = "一年套餐";
-            }
-            if ($paymentType == "2year"){
-                $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . ' +2 year');
-                $order->payment_day = 720;
-                $order->payment_name = "两年套餐";
-            }
+            $order->payment_date = strtotime(date('Y-m-d H:i:s', $completeOrder->payment_date) . $Plan->plan_time);
+            $order->payment_name =$Plan->plan_name;
         } else {
             // 如果没有已完成的 那就在当前时间上累加
             // 还有一种情况有完成但是已过期的也是这种模式
             $order->user_id = $this->user->id;
             $order->user_name = $this->user->user_name;
             $order->user_email = $this->user->email;
-            if ($paymentType == "1month"){
-                $order->payment_date = strtotime("+1 month");
-                $order->payment_day = 30;
-                $order->payment_name = "包月套餐";
-            }
-            if ($paymentType == "6month"){
-                $order->payment_date = strtotime("+6 month");
-                $order->payment_day = 180;
-                $order->payment_name = "半年套餐";
-            }
-            if ($paymentType == "1year"){
-                $order->payment_date = strtotime("+1 year");
-                $order->payment_day = 360;
-                $order->payment_name = "一年套餐";
-            }
-            if ($paymentType == "2year"){
-                $order->payment_date = strtotime("+2 year");
-                $order->payment_day = 720;
-                $order->payment_name = "两年套餐";
-            }
+            $order->payment_date = strtotime($Plan->plan_time);
+            $order->payment_name = $Plan->plan_name;
         }
         
         if (!$order->save()){
@@ -193,10 +161,13 @@ class UserController extends BaseController
             $res['msg'] = "订单提交失败";
             return $response->getBody()->write(json_encode($res));
         } else {
-            $res['ret'] = 1;
-            $res['msg'] = "订单提交成功";
-            return $this->echoJson($response, $res);
+            // $res['ret'] = 1;
+            // $res['msg'] = "订单提交成功";
+            // return $this->echoJson($response, $res);
+            $newResponse = $response->withStatus(302)->withHeader('Location', '/user/order');
+            return $newResponse;
         }
+
     }
 
     public function order($request, $response, $args) 

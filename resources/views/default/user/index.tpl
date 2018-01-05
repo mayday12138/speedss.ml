@@ -6,7 +6,7 @@
 	<section class="content-header">
 		<h1>
 			用户中心
-			<a class="btn btn-primary" href="https://download.speedss.ml/main_page_english_version.png">English Language</a>			
+			<a class="btn btn-primary" href="https://download.speedss.ml/main_page_english_version.png">English Language</a>
 			<small>User Center</small>
 		</h1>
 	</section>
@@ -89,6 +89,65 @@
 			<div class="col-md-6">
 				<div class="box box-primary">
 					<div class="box-header">
+						<i class="fa fa-bullhorn"></i>
+						<h3 class="box-title">套餐低价促销!</h3>
+						<a href="/intro" class="btn btn-primary">产品介绍</a>
+						<!-- <a href="/intro#pricing" class="btn btn-primary">价格信息</a> -->
+						<a class="btn btn-primary" href="/user/payment">购买套餐</a>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body table-responsive no-padding">
+						<!--<p>单次购买: 10元30G流量, 月底不清零</p>-->
+						
+
+						<table class="table table-hover">
+							<tr>
+								<td></td>
+								<td>套餐</td>
+								<td>价格</td>
+								<td>赠送</td>
+								<td>设备数量</td>
+								<td>流量限制</td>
+								<td>
+									<td>
+							</tr>
+							{foreach $plans as $plan}
+							<tr>
+								<td></td>
+								<td>{$plan->plan_name}</td>
+								<td>{$plan->plan_price}</td>
+								<td>{$plan->plan_detail}</td>
+								<td>{$plan->plan_client}</td>
+								<td>{$plan->plan_flow}</td>
+								<td>
+									<a class="btn btn-primary btn-sm" href="/user/payment/{$plan->id}">提交订单</a>
+								</td>
+							</tr>
+							{/foreach}
+						</table>
+
+						<!--<p>包月套餐: 10元50G流量</p>
+							<p>一次性购买半年(现仅需60元)可享每月80G大流量</p>
+							<p>一次性购买全年(现仅需99元)可享全年使用任意节点不限流量</p>-->
+						<!--<p>半年套餐(现仅需60元)每月80G流量(6台使用设备)</p>
+						<p>一年套餐(现仅需120元)每月200G大流量(6台使用设备)</p>
+						<p>两年套餐(现仅需199元)使用任意节点不限流量 不限设备数量</p>-->
+						<!--<p>购买套餐:-->
+							<!--<a class="btn btn-primary" href="/downloads/pay.png">支付宝付款</a>-->
+							<!--<a class="btn btn-primary" href="/downloads/wechatpay.png">微信付款</a>-->
+							<!-- <a class="btn btn-primary" href="/user/payment">购买套餐</a> -->
+						<!--</p>-->
+						<!--<p>&nbsp</p>-->
+						<!--<p>微信群(不定时更新邀请):&nbsp&nbsp;
+							<a href="/downloads/wechat.png">二维码</a>
+						</p>-->
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-6">
+				<div class="box box-primary">
+					<div class="box-header">
 						<i class="fa  fa-paper-plane"></i>
 
 						<h3 class="box-title">连接信息</h3>
@@ -119,36 +178,6 @@
 				</div>
 			</div>
 
-			<div class="col-md-6">
-				<div class="box box-primary">
-					<div class="box-header">
-						<i class="fa fa-bullhorn"></i>
-						<h3 class="box-title">套餐低价促销!</h3>
-					</div>
-					<!-- /.box-header -->
-					<div class="box-body">
-						<!--<p>单次购买: 10元30G流量, 月底不清零</p>-->
-						<a href="/intro" class="btn btn-primary">产品介绍</a>
-						<a href="/intro#pricing" class="btn btn-primary">价格信息</a>
-
-						<!--<p>包月套餐: 10元50G流量</p>
-							<p>一次性购买半年(现仅需60元)可享每月80G大流量</p>
-							<p>一次性购买全年(现仅需99元)可享全年使用任意节点不限流量</p>-->
-						<p>半年套餐(现仅需60元)每月80G流量(6台使用设备)</p>
-						<p>一年套餐(现仅需120元)每月200G大流量(6台使用设备)</p>
-						<p>两年套餐(现仅需199元)使用任意节点不限流量 不限设备数量</p>
-						<p>购买套餐:
-							<!--<a class="btn btn-primary" href="/downloads/pay.png">支付宝付款</a>-->
-							<!--<a class="btn btn-primary" href="/downloads/wechatpay.png">微信付款</a>-->
-							<a class="btn btn-primary" href="/user/payment">购买套餐</a>
-						</p>
-						<p>&nbsp</p>
-						<!--<p>微信群(不定时更新邀请):&nbsp&nbsp;
-							<a href="/downloads/wechat.png">二维码</a>
-						</p>-->
-					</div>
-				</div>
-			</div>
 		</div>
 
 		<!--<div class="row">

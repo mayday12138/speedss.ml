@@ -99,7 +99,7 @@ $app->group('/user', function () {
 
     $this->get('/getclient', 'App\Controllers\UserController:getclient');
     $this->get('/payment', 'App\Controllers\UserController:payment');
-    $this->post('/payment', 'App\Controllers\UserController:paymentHandle');
+    $this->get('/payment/{id}', 'App\Controllers\UserController:paymentHandleById');
     $this->get('/order', 'App\Controllers\UserController:order');
     $this->get('/getwinzip', 'App\Controllers\UserController:getWinZip');
     $this->get('/watchvideo', 'App\Controllers\UserController:watchVideo');
