@@ -42,48 +42,37 @@ class UserController extends BaseController
         if ($msg == null) {
             $msg = "在后台修改用户中心公告...";
         }
-        $v2ray_node_1 = V2rayNode::where("id", 1)->first();
-        $v2ray_node_2 = V2rayNode::where("id", 2)->first();
+        // $v2ray_node_1 = V2rayNode::where("id", 1)->first();
+        // $v2ray_node_2 = V2rayNode::where("id", 2)->first();
 
-        // android的二维码 主服
-        $ary['add'] = $v2ray_node_1->address;
-        $ary['ps'] = $v2ray_node_1->address;
-        $ary['port'] = $v2ray_node_1->port;
-        $ary['id'] = $this->user->uuid;
-        $ary['security'] = $v2ray_node_1->security;
-        $ary['aid'] = $v2ray_node_1->alter_id;
-        if ($v2ray_node_1->network == "websocket"){
-            $ary['net'] = "ws";
-        }
-        $ary['host'] = $v2ray_node_1->path;
-        if ($v2ray_node_1->tls == "1"){
-            $ary['tls'] = "tls";
-        }
-        $ary['type'] = $v2ray_node_1->type;
-        $json = json_encode($ary);
-        $v2ray_qr_1_android = "vmess://" . base64_encode($json);
+        $nodes = v2rayNode::all();
+        $v2ray_qr_android_array = array();
+        $v2ray_qr_ios_array = array();
+        foreach ($nodes as $node) {
+            // android的二维码
+            $ary['add'] = $node->address;
+            $ary['ps'] = $node->address;
+            $ary['port'] = $node->port;
+            $ary['id'] = $this->user->uuid;
+            $ary['security'] = $node->security;
+            $ary['aid'] = $node->alter_id;
+            if ($node->network == "websocket"){
+                $ary['net'] = "ws";
+            }
+            $ary['host'] = $node->path;
+            if ($node->tls == "1"){
+                $ary['tls'] = "tls";
+            }
+            $ary['type'] = $node->type;
+            $json = json_encode($ary);
+            $v2ray_qr_1_android = "vmess://" . base64_encode($json);
+            array_push($v2ray_qr_android_array, $v2ray_qr_1_android);
 
-        // android的二维码 备用服
-        $ary2['add'] = $v2ray_node_2->address;
-        $ary2['ps'] = $v2ray_node_2->address;
-        $ary2['port'] = $v2ray_node_2->port;
-        $ary2['id'] = $this->user->uuid;
-        $ary2['security'] = $v2ray_node_2->security;
-        $ary2['aid'] = $v2ray_node_2->alter_id;
-        if ($v2ray_node_2->network == "websocket"){
-            $ary2['net'] = "ws";
+            // iOS的二维码
+            $v2ray_qr_1_ios = "vmess://" . base64_encode($node->security . ":" . $this->user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls;
+            array_push($v2ray_qr_ios_array, $v2ray_qr_1_ios);
         }
-        $ary2['host'] = $v2ray_node_2->path;
-        if ($v2ray_node_2->tls == "1"){
-            $ary2['tls'] = "tls";
-        }
-        $ary2['type'] = $v2ray_node_2->type;
-        $json2 = json_encode($ary2);
-        $v2ray_qr_2_android = "vmess://" . base64_encode($json2);
-        // iOS的二维码 主服
-        // aes-128-cfb:c4a3ffd1-e874-4dac-a522-9ca0058b2156@v2ray-nginx.speedss.ml:443?obfs=websocket&path=/v2ray/&tls=1
-        $v2ray_qr_1_ios = "vmess://" . base64_encode($v2ray_node_1->security . ":" . $this->user->uuid . "@" . $v2ray_node_1->address . ":" . $v2ray_node_1->port) . "?obfs=" . $v2ray_node_1->network . "&path=" . $v2ray_node_1->path . "&tls=" .$v2ray_node_1->tls;
-        $v2ray_qr_2_ios = "vmess://" . base64_encode($v2ray_node_2->security . ":" . $this->user->uuid . "@" . $v2ray_node_2->address . ":" . $v2ray_node_2->port) . "?obfs=" . $v2ray_node_2->network . "&path=" . $v2ray_node_2->path . "&tls=" .$v2ray_node_2->tls;
+        
         // 公告信息
         $userInfos = UserInfo::where("hidden", 0)->orderBy('id','desc')->get();
         // 价格表
@@ -97,13 +86,10 @@ class UserController extends BaseController
             $this->user->payment_status = "已过期";
             $this->user->save();
         }
-        return $this->view()->assign('v2ray_qr_1_android', $v2ray_qr_1_android)
-                            ->assign('v2ray_qr_2_android', $v2ray_qr_2_android)
-                            ->assign('v2ray_qr_1_ios', $v2ray_qr_1_ios)
-                            ->assign('v2ray_qr_2_ios', $v2ray_qr_2_ios)
+        return $this->view()->assign('v2ray_qr_android_array', $v2ray_qr_android_array)
+                            ->assign('v2ray_qr_ios_array', $v2ray_qr_ios_array)
                             ->assign('userInfos', $userInfos)
-                            ->assign('v2ray_node_1', $v2ray_node_1)
-                            ->assign('v2ray_node_2', $v2ray_node_2)
+                            ->assign('nodes', $nodes)
                             ->assign('msg', $msg)
                             ->assign('plans',$plans)
                             ->display('user/index.tpl');
