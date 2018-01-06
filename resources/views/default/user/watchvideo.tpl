@@ -18,6 +18,7 @@
                     </div>
                     <div class="box-footer">
                         <a class="btn btn-primary" href="/user">返回</a>
+                        <a class="btn btn-primary" href="https://download.speedss.ml/ios.mp4">看不清楚？全屏查看</a>
                     </div>
                 </div>
             </div>

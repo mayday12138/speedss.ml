@@ -313,13 +313,25 @@
 							</tr>
 							<tr>
 								<td>
+									<p>Linux客户端&nbsp&nbsp
+										<a class="btn btn-primary" href="https://download.speedss.ml/v2ray_2.42_linux_32_new.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+									</p>
+									<p>下载后需手动填写配置信息
+										<a href="https://doc.speedss.ml/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
 									<p>iOS客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://itunes.apple.com/cn/app/shadowray/id1283082051?mt=8" target="_blank">点击查看</a>
+										<a class="btn btn-primary" href="https://itunes.apple.com/us/app/shadowrocket/id932747118?mt=8" target="_blank">点击查看</a>
 										<a class="btn btn-primary" href="/user/watchvideo">查看操作视频</a>
 									</p>
-									<p>iOS用户请在App Store搜索下载"shadowray"(需要付费，12元)</p>
-									<p>也可以找管理员索要已经付费过的苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
-									<p>进入后点击no server->scan QR Code 然后扫描下方iOS二维码导入配置，返回点击火箭图标，变为鲜绿色为连接成功</p>
+									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
+									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
+									<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo">查看操作视频</a></p>
+									<p><a class="btn btn-primary" href="/user/watchvideo">遇到问题？查看操作视频</a></p>
 								</td>
 							</tr>
 						</table>
