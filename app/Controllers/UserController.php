@@ -102,6 +102,7 @@ class UserController extends BaseController
         $arg_fingerprint = $request->getParam('fingerprint');
         $arg_system = $request->getParam('system');
         $arg_browser = $request->getParam('browser');
+        $arg_useragent = $request->getHeaderLine('User-Agent');
 
         $print = UserFingerprint::where('fingerprint', $arg_fingerprint)->first();
         if ($print != null) {
@@ -119,6 +120,7 @@ class UserController extends BaseController
                 $fingerprint->system = $arg_system;
                 $fingerprint->browser = $arg_browser;
                 $fingerprint->same = "跟" . $print->user_name . "的指纹一样";
+                $fingerprint->useragent = $arg_useragent;
                 $fingerprint->save();
             }
         } else {
@@ -130,6 +132,7 @@ class UserController extends BaseController
             $fingerprint->fingerprint = $arg_fingerprint;
             $fingerprint->system = $arg_system;
             $fingerprint->browser = $arg_browser;
+            $fingerprint->useragent = $arg_useragent;
             $fingerprint->save();
         }        
     }
