@@ -104,6 +104,7 @@ $app->group('/user', function () {
     $this->get('/getwinzip', 'App\Controllers\UserController:getWinZip');
     $this->get('/watchvideo', 'App\Controllers\UserController:watchVideo');
     $this->get('/getserverconfig', 'App\Controllers\UserController:getServerConfig');
+    $this->post('/fingerprint', 'App\Controllers\UserController:postFingerPrint');
 
 })->add(new Auth());
 

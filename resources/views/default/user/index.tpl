@@ -263,6 +263,7 @@
 		<!-- /.row -->
 		<!-- END PROGRESS BARS -->
 		<script src=" /assets/public/js/jquery.qrcode.min.js "></script>
+		<script src="/assets/public/js/client.min.js" type="text/javascript"></script>
 		<script>
 			{foreach $v2ray_qr_android_array as $key=>$qr}
 				jQuery('#v2ray-qr-{$key}-android').qrcode({
@@ -282,6 +283,24 @@
 
 <script>
 	$(document).ready(function () {
+		// Create a new ClientJS object
+		var client = new ClientJS();
+		$.ajax({
+			type: "POST",
+			url: "/user/fingerprint",
+			dataType: "json",
+			data: {
+				fingerprint: String(client.getFingerprint()),
+				system: client.getBrowserData().os.name + " " + client.getBrowserData().os.version,
+				browser: client.getBrowserData().browser.name + " " + client.getBrowserData().browser.version
+			},
+			success: function (data) {
+				
+			},
+			error: function (jqXHR) {
+	
+			}
+		});
 		$("#checkin").click(function () {
 			$.ajax({
 				type: "POST",

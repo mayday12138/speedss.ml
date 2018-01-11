@@ -9,6 +9,7 @@ use App\Models\TrafficLog;
 use App\Models\Order;
 use App\Models\V2rayNode;
 use App\Models\UserInfo;
+use App\Models\UserFingerprint;
 use App\Models\Plan;
 use App\Services\Auth;
 use App\Services\Config;
@@ -86,6 +87,7 @@ class UserController extends BaseController
             $this->user->payment_status = "已过期";
             $this->user->save();
         }
+
         return $this->view()->assign('v2ray_qr_android_array', $v2ray_qr_android_array)
                             ->assign('v2ray_qr_ios_array', $v2ray_qr_ios_array)
                             ->assign('userInfos', $userInfos)
@@ -93,6 +95,43 @@ class UserController extends BaseController
                             ->assign('msg', $msg)
                             ->assign('plans',$plans)
                             ->display('user/index.tpl');
+    }
+
+    public function postFingerPrint($request, $response, $args) {
+        // 采集指纹
+        $arg_fingerprint = $request->getParam('fingerprint');
+        $arg_system = $request->getParam('system');
+        $arg_browser = $request->getParam('browser');
+
+        $print = UserFingerprint::where('fingerprint', $arg_fingerprint)->first();
+        if ($print != null) {
+            // 已经存在
+            // 是否同一个用户的
+            if ($print->user_id == $this->user->id) {
+                // 同一用户
+            } else {
+                // 不同用户
+                $fingerprint = new UserFingerprint();
+                $fingerprint->user_id = $this->user->id;
+                $fingerprint->user_name = $this->user->user_name;
+                $fingerprint->user_email = $this->user->email;
+                $fingerprint->fingerprint = $arg_fingerprint;
+                $fingerprint->system = $arg_system;
+                $fingerprint->browser = $arg_browser;
+                $fingerprint->same = "跟" . $print->user_name . "的指纹一样";
+                $fingerprint->save();
+            }
+        } else {
+            // 不存在
+            $fingerprint = new UserFingerprint();
+            $fingerprint->user_id = $this->user->id;
+            $fingerprint->user_name = $this->user->user_name;
+            $fingerprint->user_email = $this->user->email;
+            $fingerprint->fingerprint = $arg_fingerprint;
+            $fingerprint->system = $arg_system;
+            $fingerprint->browser = $arg_browser;
+            $fingerprint->save();
+        }        
     }
 
     public function getclient($request, $response, $args)
