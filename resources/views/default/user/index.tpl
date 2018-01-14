@@ -196,8 +196,8 @@
 										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
-									<p>下载后需手动填写配置信息
-										<a href="https://doc.speedss.ml/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
+									<p>下载后解压打开V2RayX.app, 然后登录网站账号即可</p>
+									<p>如果提示身份不明的开发者, 需要到系统偏好设置->安全性与隐私->允许从以下位置下载的应用->仍要打开</p>
 								</td>
 							</tr>
 							<tr>
