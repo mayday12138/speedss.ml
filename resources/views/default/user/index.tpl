@@ -6,7 +6,7 @@
 	<section class="content-header">
 		<h1>
 			用户中心
-			<a class="btn btn-primary" href="https://download.speedss.ml/main_page_english_version.png">English Language</a>
+			<a class="btn btn-primary" href="https://download.speedss.top/main_page_english_version.png">English Language</a>
 			<small>User Center</small>
 		</h1>
 	</section>
@@ -163,15 +163,15 @@
 						<i class="fa fa-bullhorn"></i>
 
 						<h3 class="box-title">客户端下载</h3>
-						<a class="btn btn-primary" href="https://download.speedss.ml/client_download_english_version.png">English Language</a>
+						<a class="btn btn-primary" href="https://download.speedss.top/client_download_english_version.png">English Language</a>
 					</div>
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
 							<tr>
 								<td>
 									<p>Android客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.ml/v2rayNG.apk">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://download.speedss.top/v2rayNG.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<!-- <p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p> -->
 									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
@@ -181,20 +181,20 @@
 								<td>
 									<p>Windows客户端&nbsp&nbsp
 										<a class="btn btn-primary" href="/user/getwinzip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后解包打开v2rayN.exe即可（如果报毒选择信任，关闭其他代理软件，确保运行正常）如有问题，可以远程协助，
-										<a href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a>
+										<a href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a>
 									</p>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<p>Mac客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.ml/V2RayX.app.zip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://download.speedss.top/V2RayX.app.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后解压打开V2RayX.app, 然后登录网站账号即可</p>
 									<p>如果提示身份不明的开发者, 需要到系统偏好设置->安全性与隐私->允许从以下位置下载的应用->仍要打开</p>
@@ -203,12 +203,12 @@
 							<tr>
 								<td>
 									<p>Linux客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.ml/v2ray_2.42_linux_32_new.zip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.ml/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://download.speedss.top/v2ray_2.42_linux_32_new.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后需手动填写配置信息
-										<a href="https://doc.speedss.ml/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
+										<a href="https://doc.speedss.top/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
 								</td>
 							</tr>
 							<tr>

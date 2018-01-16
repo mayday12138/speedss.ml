@@ -57,7 +57,7 @@
             <a class="page-scroll" href="/auth/register">注册</a>
           </li>
           <li>
-              <a class="page-scroll" href="https://download.speedss.ml/intro_page_english_version.png">English Language</a>              
+              <a class="page-scroll" href="https://download.speedss.top/intro_page_english_version.png">English Language</a>              
           </li>
         </ul>
       </div>

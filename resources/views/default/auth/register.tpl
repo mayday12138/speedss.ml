@@ -9,7 +9,7 @@
 
         <div class="register-box-body" style="width:380px;">
             <p class="login-box-msg">注册，然后变成一只猫。
-                <a class="btn btn-primary" href="https://download.speedss.ml/register_english_version.png">English Language</a>
+                <a class="btn btn-primary" href="https://download.speedss.top/register_english_version.png">English Language</a>
             </p>
 
 

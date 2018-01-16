@@ -1,6 +1,6 @@
 server {
     listen 80;
-    server_name speedss.ml doc.speedss.ml;
+    server_name speedss.top doc.speedss.top;
     return 301 https://$server_name$request_uri;
 }
 
@@ -8,10 +8,10 @@ server {
           listen     443;
 
           ssl        on;
-          ssl_certificate         /root/speedss.ml.pem;
-          ssl_certificate_key     /root/speedss.ml.key;
+          ssl_certificate         /root/speedss.top.pem;
+          ssl_certificate_key     /root/speedss.top.key;
 	 error_page 497 https://$host:$server_port$request_uri;
-          server_name    speedss.ml;
+          server_name    speedss.top;
           access_log     /var/log/nginx/nginx.vhost.access.log;
           error_log      /var/log/nginx/nginx.vhost.error.log;
 	 root /var/www/ss-panel/public/;
@@ -41,10 +41,10 @@ server {
           listen     443;
 
           ssl        on;
-          ssl_certificate         /root/speedss.ml.pem;
-          ssl_certificate_key     /root/speedss.ml.key;
+          ssl_certificate         /root/speedss.top.pem;
+          ssl_certificate_key     /root/speedss.top.key;
 	 error_page 497 https://$host:$server_port$request_uri;
-          server_name    doc.speedss.ml;
+          server_name    doc.speedss.top;
           access_log     /var/log/nginx/nginx.vhost.access.log;
           error_log      /var/log/nginx/nginx.vhost.error.log;
          root /var/www/wordpress/;

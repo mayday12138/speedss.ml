@@ -30,25 +30,25 @@
     "urlGFWList": "",
     "vmess": [
         {
-            "address": "v2ray-nginx.speedss.ml",
+            "address": "v2ray-nginx.speedss.top",
             "port": 443,
             "id": "1ce15f2d-72dc-2189-f082-72e4a1ad84ec",
             "alterId": 64,
             "security": "aes-128-cfb",
             "network": "ws",
-            "remarks": "v2ray-nginx.speedss.ml",
+            "remarks": "v2ray-nginx.speedss.top",
             "headerType": "none",
             "requestHost": "/v2ray/",
             "tls": "tls"
         },
         {
-            "address": "v2ray-nginx-reserve.speedss.ml",
+            "address": "v2ray-nginx-reserve.speedss.top",
             "port": 443,
             "id": "1ce15f2d-72dc-2189-f082-72e4a1ad84ec",
             "alterId": 64,
             "security": "aes-128-cfb",
             "network": "ws",
-            "remarks": "v2ray-nginx-reserve.speedss.ml",
+            "remarks": "v2ray-nginx-reserve.speedss.top",
             "headerType": "none",
             "requestHost": "/v2ray/",
             "tls": "tls"
