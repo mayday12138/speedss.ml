@@ -19,8 +19,8 @@ def main():
             'cache-control': "no-cache",
             'postman-token': "0c6691db-d363-8c9c-128d-21d76fa1f0f1"
             }
-        response = requests.request("GET", url, headers=headers, params=querystring)
         try:
+            response = requests.request("GET", url, headers=headers, params=querystring)
             jsonstr = json.loads(response.text)
         except:
             printLog("Server data error, try again after %d seconds" % sleepTime)
