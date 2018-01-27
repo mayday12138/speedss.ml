@@ -126,10 +126,10 @@
 						<dl class="dl-horizontal">
 							{foreach $nodes as $key=>$node}
 								{if $key == 0}
-									<dt>主服务器地址(address)</dt>
+									<dt>{$node->name}</dt>
 									<dd>{$node->address}</dd>
 								{else}
-									<dt>备用服务器地址</dt>
+									<dt>{$node->name}</dt>
 									<dd>{$node->address}</dd>
 								{/if}
 								{if $key == ($nodes->count()-1)}
@@ -230,33 +230,22 @@
 		</div>
 
 		<div class="row">
-			{foreach $v2ray_qr_ios_array as $key=>$qr}
+			{foreach $nodes as $key=>$node}
 				<div class="col-xs-8 col-md-3">
-					{if $key == 0}
-						<p>iOS 主服务器</p>
-					{else}
-						<p>iOS 备用服务器</p>
-					{/if}
+					<p>iOS {$node->name}</p>
 					<div id="v2ray-qr-{$key}-ios">
-
 					</div>
 				</div>
-            {/foreach}
+			{/foreach}
 		</div>
 		<div class="row">
-			{foreach $v2ray_qr_android_array as $key=>$qr}
+			{foreach $nodes as $key=>$node}
 				<div class="col-xs-8 col-md-3">
-					{if $key == 0}
-						<p>Android 主服务器</p>
-					{else}
-						<p>Android 备用服务器</p>
-					{/if}
-					
+					<p>Android {$node->name}</p>
 					<div id="v2ray-qr-{$key}-android">
-
 					</div>
 				</div>
-            {/foreach}
+			{/foreach}
 		</div>
 
 

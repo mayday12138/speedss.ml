@@ -68,7 +68,7 @@ class HomeController extends BaseController
             $addNode["alterId"] = (int)$node->alter_id;
             $addNode["security"] = $node->security;
             $addNode["network"] = $node->getWebsocketAlias();
-            $addNode["remarks"] = $node->address;
+            $addNode["remarks"] = $node->name;
             $addNode["headerType"] = $node->type;
             $addNode["requestHost"] = $node->path;
             $addNode["streamSecurity"] = $node->getTlsAlias();
@@ -98,11 +98,7 @@ class HomeController extends BaseController
         $configJson = [];
         foreach ($nodes as $node) {
             $addNode["add"] = $node->address;
-            if ($node->id == 1) {
-                $addNode["ps"] = "主服务器";
-            } else {
-                $addNode["ps"] = "备用服务器";
-            }
+            $addNode["ps"] = $node->name;
             $addNode["port"] = $node->port;
             $addNode["id"] = $user->uuid;
             $addNode["aid"] = $node->alter_id;

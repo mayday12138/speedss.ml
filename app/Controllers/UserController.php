@@ -52,7 +52,7 @@ class UserController extends BaseController
         foreach ($nodes as $node) {
             // android的二维码
             $ary['add'] = $node->address;
-            $ary['ps'] = $node->address;
+            $ary['ps'] = $node->name;
             $ary['port'] = $node->port;
             $ary['id'] = $this->user->uuid;
             $ary['security'] = $node->security;
@@ -220,7 +220,7 @@ class UserController extends BaseController
             $addNode["alterId"] = (int)$node->alter_id;
             $addNode["security"] = $node->security;
             $addNode["network"] = $node->getWebsocketAlias();
-            $addNode["remarks"] = $node->address;
+            $addNode["remarks"] = $node->name;
             $addNode["headerType"] = $node->type;
             $addNode["requestHost"] = $node->path;
             $addNode["streamSecurity"] = $node->getTlsAlias();
@@ -258,7 +258,7 @@ class UserController extends BaseController
             $addNode["alterId"] = (int)$node->alter_id;
             $addNode["security"] = $node->security;
             $addNode["network"] = $node->getWebsocketAlias();
-            $addNode["remarks"] = $node->address;
+            $addNode["remarks"] = $node->name;
             $addNode["headerType"] = $node->type;
             $addNode["requestHost"] = $node->path;
             $addNode["streamSecurity"] = $node->getTlsAlias();
