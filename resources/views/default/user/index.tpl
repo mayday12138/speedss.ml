@@ -219,8 +219,9 @@
 									</p>
 									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
 									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
-									<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo">查看操作视频</a></p>
-									<p><a class="btn btn-primary" href="/user/watchvideo">遇到问题？查看操作视频</a></p>
+									<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>
+									<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>
+									<!--<p><a class="btn btn-primary" href="/user/watchvideo">遇到问题？查看操作视频</a></p>-->
 								</td>
 							</tr>
 						</table>
