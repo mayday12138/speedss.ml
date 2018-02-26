@@ -6,7 +6,7 @@
 	<section class="content-header">
 		<h1>
 			用户中心
-			<a class="btn btn-primary" href="https://download.speedss.top/main_page_english_version.png">English Language</a>
+			<a class="btn btn-primary" href="https://download.speedss.top/main_page_english_version.png">English</a>
 			<small>User Center</small>
 		</h1>
 	</section>
@@ -163,7 +163,7 @@
 						<i class="fa fa-bullhorn"></i>
 
 						<h3 class="box-title">客户端下载</h3>
-						<a class="btn btn-primary" href="https://download.speedss.top/client_download_english_version.png">English Language</a>
+						<a class="btn btn-primary" href="https://download.speedss.top/client_download_english_version.png">English</a>
 					</div>
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="robots" content="index,follow">
-  <title>SpeedSS - 超高性价比SS</title>
+  <title>SpeedSS - 高速稳定代理</title>
   <link href="/assets/public/intro/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="/assets/public/intro/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="/assets/public/intro/style.css" rel="stylesheet" type="text/css">
@@ -28,7 +28,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-      <a class="logo page-scroll" href="#header"><img src="/assets/public/intro/logo.png" class="img-responsive" alt="stresser logo"></a>
+        <a class="logo page-scroll" href="#header"><img src="/assets/public/intro/logo.png" class="img-responsive" alt="stresser logo"></a>
       </div>
       <div class="collapse navbar-collapse" id="main-menu">
         <ul class="nav navbar-nav navbar-right">
@@ -57,7 +57,7 @@
             <a class="page-scroll" href="/auth/register">注册</a>
           </li>
           <li>
-              <a class="page-scroll" href="https://download.speedss.top/intro_page_english_version.png">English Language</a>              
+            <a class="page-scroll" href="https://download.speedss.top/intro_page_english_version.png">English</a>
           </li>
         </ul>
       </div>
@@ -66,8 +66,8 @@
   <header id="header">
     <div class="container">
       <div class="intro-text">
-        <h1 class="intro-lead-in">Speedss 简单 好用 超高性价比</h1>
-        <span class="intro-heading">每月低价从 ￥10 起， 我们的定位是性价比， 保证速度同时，用最低的价格享受优质稳定的产品！</span>
+        <h1 class="intro-lead-in">Speedss 高速 稳定 绝不跑路</h1>
+        <span class="intro-heading">我们不做廉价产品，我们的追求是稳定,稳定,稳定 用户体验是我们的追求</span>
         <div class="header-buttons">
           <a href="/auth/login" class="primary-button" style="margin-bottom: 10px;">用户中心</a>
           <a href="/auth/register" class="primary-button" style="margin-bottom: 10px;">现在注册</a>
@@ -92,107 +92,80 @@
       </div>
       <div class="row outer-margin">
         <div class="col-md-3">
-          <div class="row pricing-title">免费试用</div>
+          <div class="row pricing-title">体验套餐</div>
           <div class="row pricing">
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="row">
                 <span class="pricing-price"><span class="currency">￥</span>0.00</span>
-                <span class="pricing-time">/月</span>
-                <div class="billing-time">按月结算</div>
+                <span class="pricing-time">/天</span>
+                <div class="billing-time">按天结算</div>
               </div>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>1G 试用流量</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>流量无限制</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>15天 使用时间</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>7天 使用时间</span></span>
             </div>
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>仅供一人使用</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>2个节点</span></span>
+            <!--<div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>2个节点</span></span>
+            </div>-->
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>指导安装</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>无售后服务</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>Windows/Mac/Linux/Android/iOS</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>全平台支持</span></span>
             </div>
             <div class="pricing-row button-container">
               <a href="/auth/register" class="secondary-button secondary-button-inverse">购买</a>
             </div>
           </div>
         </div>
-        <!--<div class="col-md-3">
-          <div class="row pricing-title">月付计划</div>
+        <div class="col-md-3">
+          <div class="row pricing-title">季度套餐</div>
           <div class="row pricing">
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="row">
-                <span class="pricing-price"><span class="currency">￥</span>10.00</span>
-                <span class="pricing-time">/月</span>
-                <div class="billing-time">按月结算</div>
+                <span class="pricing-price"><span class="currency">￥</span>70</span>
+                <span class="pricing-time">/季度</span>
+                <div class="billing-time">按季度结算</div>
               </div>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>50G流量/月</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>流量无限制</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>1个月 使用时间</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>季度 使用时间</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>4台使用设备数</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>3台使用设备数</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>4个节点</span></span>
-            </div>
+            <!--<div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
+            </div>-->
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>享受7x24小时服务</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>Windows/Mac/Linux/Android/iOS</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>全平台支持</span></span>
             </div>
             <div class="pricing-row button-container">
               <a href="/auth/register" class="secondary-button secondary-button-inverse">购买</a>
             </div>
           </div>
-        </div>-->
+        </div>
         <div class="col-md-3">
-          <div class="row pricing-title">半年计划</div>
+          <div class="row pricing-title">半年套餐</div>
           <div class="row pricing">
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="row">
-                <span class="pricing-price"><span class="currency">￥</span>60.00</span>
+                <span class="pricing-price"><span class="currency">￥</span>120</span>
                 <span class="pricing-time">/半年</span>
                 <div class="billing-time">按半年结算</div>
               </div>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>80G流量/月</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>流量无限制</span></span>
             </div>
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>半年 使用时间</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6台使用设备数</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>3台使用设备数</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
-            </div>
+            <!--<div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
+            </div>-->
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>享受7x24小时服务</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>Windows/Mac/Linux/Android/iOS</span></span>
-            </div>
-            <div class="pricing-row button-container">
-              <a href="/auth/register" class="secondary-button secondary-button-inverse">购买</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="row pricing-title">年付计划</div>
-          <div class="row pricing">
-            <div class="col-lg-3 col-md-3 col-sm-3">
-              <div class="row">
-                <span class="pricing-price"><span class="currency">￥</span>120.00</span>
-                <span class="pricing-time">/年</span>
-                <div class="billing-time">按年结算</div>
-              </div>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>200G流量/月</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>1年 使用时间</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6台使用设备数</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>享受7x24小时服务</span></span>
-            </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>Windows/Mac/Linux/Android/iOS</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>全平台支持</span></span>
             </div>
             <div class="pricing-row button-container">
               <a href="/auth/register" class="secondary-button secondary-button-inverse">购买</a>
@@ -200,27 +173,27 @@
           </div>
         </div>
 
-	<div class="col-md-3">
-          <div class="row pricing-title">两年计划</div>
+        <div class="col-md-3">
+          <div class="row pricing-title">一年套餐</div>
           <div class="row pricing active">
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="row">
-                <span class="pricing-price"><span class="currency">￥</span>199.00</span>
+                <span class="pricing-price"><span class="currency">￥</span>180</span>
                 <span class="pricing-time">/年</span>
-                <div class="billing-time">按两年结算</div>
+                <div class="billing-time">按年结算</div>
               </div>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>无限流量/月</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>无流量限制</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>2年 使用时间</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>1年 使用时间</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>不限使用设备数</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6台使用设备</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
-            </div>
+            <!--<div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>6个节点(HK JP US)</span></span>
+            </div>-->
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>享受7x24小时服务</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>Windows/Mac/Linux/Android/iOS</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>全平台支持</span></span>
             </div>
             <div class="pricing-row button-container">
               <a href="/auth/register" class="secondary-button">购买</a>
@@ -279,7 +252,7 @@
               <li>99.99% 在线率不宕机 &amp; 24/7 提供服务</li>
               <li>控制台人性化设计 我们想，给用户一个美好的体验</li>
               <li>Windows/Mac/Android/IOS/Openwrt 全平台通用</li>
-              <li>提供30天免费试用</li>
+              <li>提供7天免费试用</li>
             </ul>
             <a href="/auth/register" class="primary-button button-inverse">注册</a>
             <img src="/assets/public/intro/booter.png" class="fadeRight animated" alt="best booter">
@@ -300,7 +273,7 @@
           <h2 class="section-heading">我们的模式</h2>
           <span class="separator"></span>
           <p class="section-subheading">
-            我们的定位是性价比, 保证速度同时, 用最低的价格享受优质稳定的产品，精心挑选优秀高速服务器，智能线路分配，为您提供最好的速度！</p>
+            我们的定位是稳定性, 保证速度同时, 用最低的价格享受优质稳定的产品，精心挑选优秀高速服务器，智能线路分配，为您提供最好的速度！</p>
         </div>
 
       </div>
@@ -317,7 +290,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <div class="chart" data-percent="100">500+</div>
+          <div class="chart" data-percent="100">1000+</div>
           <div class="chart-content">
             <i class="nc-icon-outline board"></i>
             <h4 class="service-heading">注册用户</h4>
