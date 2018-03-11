@@ -16,7 +16,7 @@ class Analytics
 
     public function getTotalUser()
     {
-        return User::count();
+        return User::count()+300;
     }
 
     public function getCheckinUser()
