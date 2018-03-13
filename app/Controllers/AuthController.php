@@ -197,7 +197,8 @@ class AuthController extends BaseController
                 $res['msg'] = "邀请码无效";
                 return $this->echoJson($response, $res);
             } else {
-                if ($adminName == "leslie" || $adminName == "管道工") {
+                // if ($adminName == "leslie" || $adminName == "管道工") {
+                if ($adminName == "管道工") {
                     $char = Tools::genRandomChar(32);
                     $c = new InviteCode();
                     $c->code = $char;
