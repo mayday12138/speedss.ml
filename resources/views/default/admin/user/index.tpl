@@ -34,6 +34,7 @@
                                 <th>套餐状态</th>
                                 <th>注册时间</th>
                                 <th>指纹</th>
+                                <th>uuid</th>
                                 <th>注册IP</th>
                                 <th>注册地址</th>
                                 <th>最后登录地址</th>
@@ -56,6 +57,7 @@
                                 <th>{$user->payment_status}</th>
                                 <th>{$user->reg_date}</th>
                                 <th>{$user->fingerprint}</th>
+                                <th>{$user->uuid}</th>
                                 <th>{$user->reg_ip}</th>
                                 <th>{$user->reg_address}</th>
                                 <th>{$user->login_address}</th>
