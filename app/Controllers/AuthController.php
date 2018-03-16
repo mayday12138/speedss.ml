@@ -204,6 +204,12 @@ class AuthController extends BaseController
                     $c->code = $char;
                     $c->user_id = 1;
                     $c->save();
+                } else if ($adminName == "凸凸突突兔套") {
+                    $char = Tools::genRandomChar(32);
+                    $c = new InviteCode();
+                    $c->code = $char;
+                    $c->user_id = 298;
+                    $c->save();
                 } else {
                     $res['ret'] = 0;
                     $res['error_code'] = self::WrongCode;
@@ -292,9 +298,9 @@ class AuthController extends BaseController
         // 注册新加时间
         if ($shouldAddTime) {
             date_default_timezone_set('Asia/Shanghai');
-            $user->payment_date = strtotime('+7 day');
-            $user->payment_day = 7;
-            $user->payment_name = "7天体验套餐";
+            $user->payment_date = strtotime('+3 day');
+            $user->payment_day = 3;
+            $user->payment_name = "3天体验套餐";
         } else {
             date_default_timezone_set('Asia/Shanghai');
             $user->payment_date = time()-10;
