@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="robots" content="index,follow">
-  <title>SpeedSS - 高速稳定代理</title>
+  <title>Speedss - 高速稳定代理</title>
   <link href="/assets/public/intro/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="/assets/public/intro/font-awesome.min.css" rel="stylesheet" type="text/css">
   <link href="/assets/public/intro/style.css" rel="stylesheet" type="text/css">
