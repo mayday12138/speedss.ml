@@ -92,7 +92,7 @@
       </div>
       <div class="row outer-margin">
         <div class="col-md-3">
-          <div class="row pricing-title">体验套餐</div>
+          <div class="row pricing-title">3天体验套餐</div>
           <div class="row pricing">
             <div class="col-lg-3 col-md-3 col-sm-3">
               <div class="row">
@@ -103,7 +103,7 @@
             </div>
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>流量无限制</span></span>
             </div>
-            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>7天 使用时间</span></span>
+            <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>3天 使用时间</span></span>
             </div>
             <div class="pricing-row"><span class="pricing-value"><span class="pricing-option"><i class="fa fa-check"></i>仅供一人使用</span></span>
             </div>
@@ -252,7 +252,7 @@
               <li>99.99% 在线率不宕机 &amp; 24/7 提供服务</li>
               <li>控制台人性化设计 我们想，给用户一个美好的体验</li>
               <li>Windows/Mac/Android/IOS/Openwrt 全平台通用</li>
-              <li>提供7天免费试用</li>
+              <li>提供3天免费试用</li>
             </ul>
             <a href="/auth/register" class="primary-button button-inverse">注册</a>
             <img src="/assets/public/intro/booter.png" class="fadeRight animated" alt="best booter">
