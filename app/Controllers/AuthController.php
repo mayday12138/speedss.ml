@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\InviteCode;
 use App\Models\User;
+use App\Models\UserFingerprint;
 use App\Services\Auth;
 use App\Services\Auth\EmailVerify;
 use App\Services\Config;
@@ -176,7 +177,9 @@ class AuthController extends BaseController
 
         $fingerprint = $request->getParam('fingerprint');
         // 检测指纹
-        $user_finger = User::where('fingerprint', $fingerprint)->first();
+        // 这里改为从指纹库检索
+        // $user_finger = User::where('fingerprint', $fingerprint)->first();
+        $user_finger = UserFingerprint::where('fingerprint', $fingerprint)->first();
         if ($user_finger == null) {
             $shouldAddTime = true;
         }
@@ -305,7 +308,7 @@ class AuthController extends BaseController
             date_default_timezone_set('Asia/Shanghai');
             $user->payment_date = time()-10;
             $user->payment_day = 0;
-            $user->payment_name = "体验套餐";
+            $user->payment_name = "重复注册, 请联系管理员";
         }
         
         // 生成uuid

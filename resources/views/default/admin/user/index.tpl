@@ -53,7 +53,7 @@
                                 <!--<td>{$user->lastSsTime()}</td>-->
                                 <!--<td>{$user->lastCheckInTime()}</td>-->
                                 <th>{$user->payment_name}</th>
-                                <th>{date('Y-m-d H-i-s', $user->payment_date)}</th>
+                                <th>{date('Y-m-d H:i:s', $user->payment_date)}</th>
                                 <th>{$user->payment_status}</th>
                                 <th>{$user->reg_date}</th>
                                 <th>{$user->fingerprint}</th>
