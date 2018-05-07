@@ -1,16 +1,13 @@
 {include file='auth/header.tpl'}
 
 <body class="register-page">
-    <div class="register-box">
-        <!--<div class="register-logo">
+<div class="register-box">
+    <div class="register-logo">
         <a href="../"><b>{$config['appName']}</b></a>
-    </div>-->
+    </div>
 
-
-        <div class="register-box-body" style="width:380px;">
-            <p class="login-box-msg">注册，然后变成一只猫。
-                <a class="btn btn-primary" href="https://download.speedss.top/register_english_version.png">English</a>
-            </p>
+    <div class="register-box-body">
+        <p class="login-box-msg">注册，然后变成一只猫。<a class="btn btn-primary" href="https://download.speedss.top/register_english_version.png">English</a></p>
 
 
             <div class="form-group has-feedback">
@@ -43,14 +40,14 @@
                 <input type="password" id="repasswd" class="form-control" placeholder="重复密码 (8位以上)" />
                 <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
             </div>
-            <p>为了大家的安全，需要验证一下你是好人</p>
-            <p>邀请码和管理员的网名二选一 必填一个 另一个请留空</p>
+            <!--<p>为了大家的安全，需要验证一下你是好人</p>-->
+            <p>邀请码或管理员的网名二选一，必填一个</p>
             <div class="form-group has-feedback">
                 <input type="text" id="code" value="{$code}" class="form-control" placeholder="邀请码 (请向管理员索取)" />
                 <span class="glyphicon glyphicon-send form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" id="adName" class="form-control" placeholder="管理员的网名叫啥" />
+                <input type="text" id="adName" class="form-control" placeholder="管理员的网名" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
 
