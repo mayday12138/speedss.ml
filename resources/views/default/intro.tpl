@@ -28,7 +28,7 @@
 <span class="icon-bar"></span>
 <span class="icon-bar"></span>
 </button>
-        <a class="logo page-scroll" href="#header"><img src="/assets/public/intro/logo.png" class="img-responsive" alt="stresser logo"></a>
+        <a class="logo page-scroll" href="#header"><img src="/assets/public/intro/logo.png" style="position:absolute; clip:rect(0px,200px,200px,0px);" class="img-responsive" alt="stresser logo"></a>
       </div>
       <div class="collapse navbar-collapse" id="main-menu">
         <ul class="nav navbar-nav navbar-right">
