@@ -11,6 +11,8 @@ class V2rayNode extends Model
     {
         if ($this->attributes['tls'] == "1") {
             return "tls";
+        } else {
+            return "none";
         }
     }
 

@@ -57,13 +57,9 @@ class UserController extends BaseController
             $ary['id'] = $this->user->uuid;
             $ary['security'] = $node->security;
             $ary['aid'] = $node->alter_id;
-            if ($node->network == "websocket"){
-                $ary['net'] = "ws";
-            }
+            $ary['net'] = $node->getWebsocketAlias();
             $ary['host'] = $node->path;
-            if ($node->tls == "1"){
-                $ary['tls'] = "tls";
-            }
+            $ary['tls'] = $node->getTlsAlias();
             $ary['type'] = $node->type;
             $json = json_encode($ary);
             $v2ray_qr_1_android = "vmess://" . base64_encode($json);
