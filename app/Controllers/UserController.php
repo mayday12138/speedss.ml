@@ -66,7 +66,7 @@ class UserController extends BaseController
             array_push($v2ray_qr_android_array, $v2ray_qr_1_android);
 
             // iOS的二维码
-            $v2ray_qr_1_ios = "vmess://" . base64_encode($node->security . ":" . $this->user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls;
+            $v2ray_qr_1_ios = "vmess://" . base64_encode($node->security . ":" . $this->user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top");
             array_push($v2ray_qr_ios_array, $v2ray_qr_1_ios);
         }
         

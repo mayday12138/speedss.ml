@@ -111,8 +111,31 @@ class HomeController extends BaseController
             $addNodeStr = "vmess://" . $addNodeStr;
             array_push($configJson, $addNodeStr);
         }
-        // return $this->echoJson($response, $configJson);
         echo json_encode($configJson, JSON_UNESCAPED_SLASHES);
+        return $response->withHeader('Content-type', 'text/plain');
+    }
+
+    public function link($request, $response, $args)
+    {
+        $uuid = $args['uuid'];
+        $user = User::where('uuid', '=', $uuid)->first();
+        if ($user == null) {
+            $res['ret'] = 0;
+            $res['msg'] = "uuid不存在";
+            return $this->echoJson($response, $res);
+        }
+        // 从v2ray_node读取配置
+        $nodes = v2rayNode::all();
+        $links = "";
+        foreach ($nodes as $node) {
+            $link = "vmess://" . base64_encode($node->security . ":" . $user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top") . "\n";
+            $links = $links . $link;
+        }
+        // header('Content-type: text/plain');
+        // echo base64_encode($links);
+        echo base64_encode($links);
+        return $response->withHeader('Content-type', 'text/plain');
+        
     }
 
     public function code()

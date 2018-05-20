@@ -76,6 +76,7 @@ $app->get('/debug', 'App\Controllers\HomeController:debug');
 $app->post('/debug', 'App\Controllers\HomeController:postDebug');
 $app->get('/getserverconfig', 'App\Controllers\HomeController:getServerConfig');
 $app->get('/getandroidserverconfig', 'App\Controllers\HomeController:getAndroidServerConfig');
+$app->get('/link/{uuid}', 'App\Controllers\HomeController:link');
 
 // User Center
 $app->group('/user', function () {
