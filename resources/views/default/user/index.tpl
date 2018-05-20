@@ -24,7 +24,7 @@
 			</div>
 		</div>-->
 
-		<div class="row">
+		<!--<div class="row">
 			<div class="col-md-10">
 				<div class="callout callout-warning">
 					<p>新用户先下载客户端&nbsp&nbsp
@@ -52,7 +52,7 @@
 					</dl>
 				</div>
 			</div>
-		</div>
+		</div>-->
 
 		<div class="row">
 			<!--<div class="col-md-6">
@@ -74,6 +74,34 @@
 					</div>
 				</div>
 			</div>-->
+
+			<div class="col-md-6">
+				<div class="callout callout-warning">
+					<p>新用户先下载客户端&nbsp&nbsp
+						<a onclick="javascript:document.getElementById('getclientclick').scrollIntoView()"> 客户端下载及配置教程</a>
+					</p>
+					<div class="table-responsive no-padding">
+						<table class="table table-condensed">
+							{foreach $userInfos as $userInfo}
+							<tr>
+								<td>{date('Y-m-d', strtotime($userInfo->created_at))}</td>
+								<td>{$userInfo->content}</td>
+							</tr>
+							{/foreach}
+						</table>
+					</div>
+					<dl class="dl-horizontal">
+						<dt>套餐类型</dt>
+						<dd>{$user->payment_name}</dd>
+						<dt>套餐有效期至</dt>
+						<dd>{$user->paymentDate()}</dd>
+						<dt>套餐状态</dt>
+						<dd>{$user->payment_status}</dd>
+						<dt>用户id</dt>
+						<dd>{$user->uuid}</dd>
+					</dl>
+				</div>
+			</div>
 
 			<div class="col-md-6">
 				<div class="box box-primary">
@@ -115,7 +143,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-6">
+			<!--<div class="col-md-6">
 				<div class="box box-primary">
 					<div class="box-header">
 						<i class="fa  fa-paper-plane"></i>
@@ -152,7 +180,7 @@
 						</dl>
 					</div>
 				</div>
-			</div>
+			</div>-->
 		</div>
 
 		<!--另起了一行row, 之前box飘到右边了, 原因未知-->
@@ -219,8 +247,11 @@
 									</p>
 									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
 									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
-									<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>
-									<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>
+									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写最下面的下方的订阅地址即可自动更新节点</p>
+									<p>订阅地址<code>https://speeedss.top/link/{$user->uuid}</code></p>
+									
+									<!--<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>-->
+									<!--<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>-->
 									<!--<p><a class="btn btn-primary" href="/user/watchvideo">遇到问题？查看操作视频</a></p>-->
 								</td>
 							</tr>
@@ -230,7 +261,7 @@
 			</div>
 		</div>
 
-		<div class="row">
+		<!--<div class="row">
 			{foreach $nodes as $key=>$node}
 				<div class="col-xs-8 col-md-3">
 					<p>iOS {$node->name}</p>
@@ -247,7 +278,7 @@
 					</div>
 				</div>
 			{/foreach}
-		</div>
+		</div>-->
 
 
 		<!-- /.row -->
