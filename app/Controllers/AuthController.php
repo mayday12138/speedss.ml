@@ -66,9 +66,9 @@ class AuthController extends BaseController
             return $this->echoJson($response, $res);
         }
         // @todo
-        $time = 3600 * 24;
+        $time = 3600 * 24 * 7;
         if ($rememberMe) {
-            $time = 3600 * 24 * 7;
+            $time = 3600 * 24 * 30;
         }
         Logger::info("login user $user->id ");
         Auth::login($user->id, $time);
