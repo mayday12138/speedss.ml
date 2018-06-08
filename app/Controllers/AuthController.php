@@ -180,6 +180,7 @@ class AuthController extends BaseController
         // 这里改为从指纹库检索
         // $user_finger = User::where('fingerprint', $fingerprint)->first();
         $user_finger = UserFingerprint::where('fingerprint', $fingerprint)->first();
+        $shouldAddTime = false;
         if ($user_finger == null) {
             $shouldAddTime = true;
         }
@@ -364,7 +365,7 @@ class AuthController extends BaseController
 
         if (EmailVerify::sendVerification($email)) {
             $res['ret'] = 1;
-            $res['msg'] = '验证代码已发送至您的邮箱，请在登录邮箱后将验证码填到相应位置.';
+            $res['msg'] = '验证码已发送至您的邮箱，如果收件箱没有则在垃圾箱里';
             return $this->echoJson($response, $res);
         }
         $res['ret'] = 0;

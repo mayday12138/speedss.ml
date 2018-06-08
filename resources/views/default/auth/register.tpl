@@ -9,7 +9,20 @@
     <div class="register-box-body">
         <p class="login-box-msg">注册，然后变成一只猫。<a class="btn btn-primary" href="https://download.speedss.top/register_english_version.png">English</a></p>
 
+            <div id="msg-success" class="alert alert-info alert-dismissable" style="display: none;">
+                <button type="button" class="close" id="ok-close" aria-hidden="true">&times;</button>
+                <h4>
+                    <i class="icon fa fa-info"></i> 成功!</h4>
+                <p id="msg-success-p"></p>
+            </div>
 
+            <div id="msg-error" class="alert alert-warning alert-dismissable" style="display: none;">
+                <button type="button" class="close" id="error-close" aria-hidden="true">&times;</button>
+                <h4>
+                    <i class="icon fa fa-warning"></i> 出错了!</h4>
+                <p id="msg-error-p"></p>
+            </div>
+            
             <div class="form-group has-feedback">
                 <input type="text" id="name" class="form-control" placeholder="昵称" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
@@ -59,20 +72,6 @@
 
             <div class="form-group has-feedback">
                 <button type="submit" id="reg" class="btn btn-primary btn-block btn-flat">同意服务条款并提交注册</button>
-            </div>
-
-            <div id="msg-success" class="alert alert-info alert-dismissable" style="display: none;">
-                <button type="button" class="close" id="ok-close" aria-hidden="true">&times;</button>
-                <h4>
-                    <i class="icon fa fa-info"></i> 成功!</h4>
-                <p id="msg-success-p"></p>
-            </div>
-
-            <div id="msg-error" class="alert alert-warning alert-dismissable" style="display: none;">
-                <button type="button" class="close" id="error-close" aria-hidden="true">&times;</button>
-                <h4>
-                    <i class="icon fa fa-warning"></i> 出错了!</h4>
-                <p id="msg-error-p"></p>
             </div>
 
             <a href="/auth/login" class="text-center">已经注册？请登录</a>
