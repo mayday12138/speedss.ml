@@ -32,20 +32,20 @@ class PasswordController extends BaseController
             return $response->getBody()->write(json_encode($rs));
         }
 
-	$user->pass = Hash::passwordHash('12345678');
-        if ($user->save()) {
-            $rs['ret'] = 1;
-            $rs['msg'] = '密码已重置为12345678, 请登录后尽快修改密码';
-            return $response->getBody()->write(json_encode($rs));
-        }
-        $rs['ret'] = 0;
-        $rs['msg'] = '未知错误';
-        return $response->getBody()->write(json_encode($rs));
+        // $user->pass = Hash::passwordHash('12345678');
+        // if ($user->save()) {
+        //    $rs['ret'] = 1;
+        //    $rs['msg'] = '密码已重置为12345678, 请登录后尽快修改密码';
+        //    return $response->getBody()->write(json_encode($rs));
+        // }
+        // $rs['ret'] = 0;
+        // $rs['msg'] = '未知错误';
+        // return $response->getBody()->write(json_encode($rs));
 
-        //Password::sendResetEmail($email);
-        //$rs['ret'] = 1;
-        //$rs['msg'] = '重置邮件已经发送,请检查邮箱.';
-        //return $response->getBody()->write(json_encode($rs));
+        Password::sendResetEmail($email);
+        $rs['ret'] = 1;
+        $rs['msg'] = '重置邮件已经发送,请检查邮箱.';
+        return $response->getBody()->write(json_encode($rs));
     }
 
     public function token($request, $response, $args)
