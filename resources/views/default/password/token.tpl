@@ -31,7 +31,7 @@
             <h4><i class="icon fa fa-warning"></i> 出错了!</h4>
             <p id="msg-error-p"></p>
         </div>
-        <a href="/auth/login" class="btn btn-primary btn-flat text-center">登陆</a><br>
+        <a href="/auth/login" class="btn btn-primary btn-flat text-center">登陆</a>
         <a href="/auth/register" class="btn btn-primary btn-flat text-center">注册帐号</a>
 
     </div><!-- /.login-box-body -->
