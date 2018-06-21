@@ -115,7 +115,7 @@
             <div class="col-xs-12 col-sm-10 col-md-8">
                 <div class="box box-primary">
                     <div class="box-header">
-                        <p class="box-title">第二步：转账后联系微信号hushuanq 等待开通</p>
+                        <p class="box-title">第二步：转账后联系微信号 hushuanq (注明转账记录和网站用户名)</p>
                         <p>因为特殊原因，现在不支持自动充值到帐</p>
                     </div>
 
