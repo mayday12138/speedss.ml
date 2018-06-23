@@ -38,7 +38,16 @@ class Analytics
 
     public function getTotalNode()
     {
-        return Node::count();
+        // return Node::count();
+        $data = file_get_contents("node");
+        $nodeDic = json_decode($data, true);
+        $num = 0;
+        foreach ($nodeDic as $ip => $time) {
+            if ((time()-$time) < 1800) {
+                $num += 1;
+            }
+        }
+        return $num;
     }
 
 }

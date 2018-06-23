@@ -45,6 +45,20 @@
                     </a>
                 </div>
             </div>
+            <div class="col-lg-3 col-xs-4">
+                <div class="small-box bg-yellow">
+                    <div class="inner">
+                        <h3>{$sts->getTotalNode()}</h3>
+
+                        <p>在线节点</p>
+                    </div>
+                    <div class="icon">
+                        <i class="ion ion-stats-bars"></i>
+                    </div>
+                    <a href="/admin/node" class="small-box-footer"> 节点管理 <i class="fa fa-arrow-circle-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
         <!-- /.row -->
         <!-- END PROGRESS BARS -->

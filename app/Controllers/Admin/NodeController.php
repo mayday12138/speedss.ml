@@ -9,8 +9,10 @@ class NodeController extends AdminController
 {
     public function index($request, $response, $args)
     {
-        $nodes = Node::all();
-        return $this->view()->assign('nodes', $nodes)->display('admin/node/index.tpl');
+        // $nodes = Node::all();
+        $data = file_get_contents("node");
+        $nodeDic = json_decode($data, true);
+        return $this->view()->assign('nodes', $nodeDic)->display('admin/node/index.tpl');
     }
 
     public function create($request, $response, $args)

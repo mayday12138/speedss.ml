@@ -6,16 +6,43 @@ use App\Controllers\BaseController;
 use App\Models\Node;
 use App\Models\TrafficLog;
 use App\Models\User;
+use App\Models\V2rayNodeOnlineLog;
 use App\Services\Config;
 use App\Services\Logger;
 use App\Storage\Dynamodb\TrafficLog as DynamoTrafficLog;
 use App\Utils\Tools;
+use App\Utils\Http;
 
 class UserController extends BaseController
 {
     // User List
     public function index($request, $response, $args)
     {
+        // // 每次请求保存3个值 uuid time ip
+        // $lastUuid = $request->getParam('uuid');
+        // $onlineUser = $request->getParam('user');
+        // if ($lastUuid != null) {
+        //     $ip = Http::getClientIP();
+        //     date_default_timezone_set('Asia/Shanghai');
+        //     // $time = date('Y-m-d H:i:s', time());
+        //     $node = V2rayNodeOnlineLog::where('ip', $ip)->first();
+        //     if ($node == null) {
+        //         $node = new V2rayNodeOnlineLog();
+        //     }
+        //     $node->node_ip = $ip;
+        //     $node->node_last_uuid = $lastUuid;
+        //     $node->node_update_time = time();
+        //     $node->node_online_user = $onlineUser;
+        //     $node->save();
+        // }
+        // 以上方式已弃用
+        $ip = Http::getClientIP();
+        date_default_timezone_set('Asia/Shanghai');
+        $data = file_get_contents("node");
+        $nodeDic = json_decode($data, true);
+        $nodeDic[$ip] = time();
+        file_put_contents("node",json_encode($nodeDic));
+
         $users = User::all();
         $res = [
             "ret" => 1,
