@@ -197,12 +197,14 @@
 						<table class="table table-hover">
 							<tr>
 								<td>
-									<p>Android客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.top/v2rayNG.apk">点击下载</a>
+									<p>Android客户端&nbsp&nbsp&nbsp&nbsp
+										<a class="btn btn-primary" href="https://download.speedss.top/BifrostV_v0.5.8.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<!-- <p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p> -->
-									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
+									<!-- <p>安装后登录网站帐号，然后同意vpn连接即可</p> -->
+									<p>安装后打开点击右上角图标, 导入, 从URL导入, 输入下方的订阅地址, 拉取到服务器列表后点击右下角图标连接服务器</p>
+									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.top/link/{$user->uuid}</code></p>
 								</td>
 							</tr>
 							<tr>
@@ -212,14 +214,14 @@
 										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
-									<p>下载后解包打开v2rayN.exe即可（如果报毒选择信任，关闭其他代理软件，确保运行正常）如有问题，可以远程协助，
+									<p>下载后解压整个目录到桌面, 然后打开v2rayN.exe即可（如果报毒选择信任，关闭其他代理软件，确保运行正常）<br>如有问题，可以远程协助，
 										<a href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a>
 									</p>
 								</td>
 							</tr>
 							<tr>
 								<td>
-									<p>Mac客户端&nbsp&nbsp
+									<p>Mac客户端&nbsp&nbsp&nbsp&nbsp
 										<a class="btn btn-primary" href="https://download.speedss.top/V2RayX.app.zip">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
@@ -241,14 +243,14 @@
 							</tr>
 							<tr>
 								<td>
-									<p>iOS客户端&nbsp&nbsp
+									<p>iOS客户端&nbsp&nbsp&nbsp&nbsp&nbsp
 										<a class="btn btn-primary" href="https://itunes.apple.com/us/app/shadowrocket/id932747118?mt=8" target="_blank">点击查看</a>
 										<a class="btn btn-primary" href="/user/watchvideo">查看操作视频</a>
 									</p>
 									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
 									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
-									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写下方的订阅地址即可自动更新节点</p>
-									<p>订阅地址<code>https://speedss.top/link/{$user->uuid}</code></p>
+									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写用户中心-iOS客户端下载的订阅地址, 然后点击完成, 提示更新中, 顺利拉到服务器列表后点击未连接即可正确连接服务器</p>
+									<p>订阅地址 <button id="ios_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#ios_link">点我复制</button> <code id="ios_link">https://speedss.top/link/{$user->uuid}</code></p>
 									
 									<!--<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>-->
 									<!--<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>-->
@@ -283,8 +285,8 @@
 
 		<!-- /.row -->
 		<!-- END PROGRESS BARS -->
-		<script src=" /assets/public/js/jquery.qrcode.min.js "></script>
-		<script src="/assets/public/js/client.min.js" type="text/javascript"></script>
+		<script src=" /assets/public/js/jquery.qrcode.min.js"></script>
+		<script src="/assets/public/js/client.min.js"></script>
 		<script>
 			{foreach $v2ray_qr_android_array as $key=>$qr}
 				jQuery('#v2ray-qr-{$key}-android').qrcode({
@@ -296,6 +298,23 @@
 					"text": "{$qr}"
 				});
 			{/foreach}
+		</script>
+		<script src="/assets/public/js/clipboard.min.js"></script>
+		<script>
+			var ios_clipboard = new ClipboardJS('#ios_copy_button');
+			ios_clipboard.on('success', function(e) {
+				alert("复制成功");
+			});
+			ios_clipboard.on('error', function(e) {
+				console.log(e);
+			});
+			var android_clipboard = new ClipboardJS('#android_copy_button');
+			android_clipboard.on('success', function(e) {
+				alert("复制成功");
+			});
+			android_clipboard.on('error', function(e) {
+				console.log(e);
+			});
 		</script>
 	</section>
 	<!-- /.content -->

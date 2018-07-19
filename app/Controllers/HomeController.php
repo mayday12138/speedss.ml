@@ -124,18 +124,32 @@ class HomeController extends BaseController
             $res['msg'] = "uuid不存在";
             return $this->echoJson($response, $res);
         }
-        // 从v2ray_node读取配置
-        $nodes = v2rayNode::all();
-        $links = "";
-        foreach ($nodes as $node) {
-            $link = "vmess://" . base64_encode($node->security . ":" . $user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top") . "\n";
-            $links = $links . $link;
+        // 判断bifrostv
+        $headerArray = $request->getHeader('User-Agent');
+        if (strpos($headerArray[0], 'okhttp') === false) {
+            $nodes = v2rayNode::all();
+            $links = "";
+            foreach ($nodes as $node) {
+                $link = "vmess://" . base64_encode($node->security . ":" . $user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top") . "\n";
+                $links = $links . $link;
+            }
+            echo base64_encode($links);
+            return $response->withHeader('Content-type', 'text/plain');
+        } else {
+            $nodes = v2rayNode::all();
+            $links = "";
+            foreach ($nodes as $node) {
+                if ($node->port == "80") {
+                    $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
+                    $links = $links . $link;
+                } else {
+                    $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&tsec=tls&ttlsa=1&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
+                    $links = $links . $link;
+                }
+            }
+            echo $links;
+            return $response->withHeader('Content-type', 'text/plain');
         }
-        // header('Content-type: text/plain');
-        // echo base64_encode($links);
-        echo base64_encode($links);
-        return $response->withHeader('Content-type', 'text/plain');
-        
     }
 
     public function code()
