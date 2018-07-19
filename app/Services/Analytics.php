@@ -42,8 +42,8 @@ class Analytics
         $data = file_get_contents("node");
         $nodeDic = json_decode($data, true);
         $num = 0;
-        foreach ($nodeDic as $ip => $time) {
-            if ((time()-$time) < 1800) {
+        foreach ($nodeDic as $ip => $dict) {
+            if ((time()-$dict["time"]) < 1800) {
                 $num += 1;
             }
         }

@@ -20,14 +20,16 @@
                         <table class="table table-hover">
                             <tr>
                                 <th>节点</th>
+                                <th>主机位置</th>
                                 <th>最后更新</th>
                                 <th>状态</th>
                             </tr>
-                            {foreach $nodes as $ip=>$time}
+                            {foreach $nodes as $ip=>$dict}
                             <tr>
                                 <td>{$ip}</td>
-                                <td>{date('Y-m-d H:i:s', $time)}</td>
-                                {if (time()-$time) < 1800}
+                                <td>{$dict["address"]}</td>
+                                <td>{date('Y-m-d H:i:s', $dict["time"])}</td>
+                                {if (time()-$dict["time"]) < 1800}
                                 <td>在线</td>
                                 {else}
                                 <td>___</td>

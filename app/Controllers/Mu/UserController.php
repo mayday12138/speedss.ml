@@ -40,7 +40,13 @@ class UserController extends BaseController
         date_default_timezone_set('Asia/Shanghai');
         $data = file_get_contents("node");
         $nodeDic = json_decode($data, true);
-        $nodeDic[$ip] = time();
+        $nodeDic[$ip]["time"] = time();
+        if ($nodeDic[$ip]["address"] == null) {
+            $addressInfo = json_decode(file_get_contents('https://ip.huomao.com/ip?ip=' . $ip), true);
+            if ($addressInfo != null) {
+                $nodeDic[$ip]["address"] = $addressInfo["country"] . $addressInfo["province"] . $addressInfo["city"] . $addressInfo["isp"];
+            }
+        }
         file_put_contents("node",json_encode($nodeDic));
 
         $users = User::all();
