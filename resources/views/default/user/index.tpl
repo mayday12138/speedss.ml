@@ -214,9 +214,9 @@
 										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
-									<p>下载后解压整个目录到桌面, 然后打开v2rayN.exe即可（如果报毒选择信任，关闭其他代理软件，确保运行正常）<br>如有问题，可以远程协助，
-										<a href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a>
-									</p>
+									<p>下载后解压整个目录到桌面, 然后打开v2rayN.exe即可（如果报毒请选择信任，关闭其他代理软件，确保运行正常）</p>
+									<p>如果打开提示"请先安装.NET Framework", 先下载安装.net框架 <a href="https://download.speedss.top/dotNET_framework_4.6.2.exe">点我下载</a></p>
+									<p>如有问题，可以远程协助，<a href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a></p>
 								</td>
 							</tr>
 							<tr>
