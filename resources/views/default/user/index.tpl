@@ -197,14 +197,18 @@
 						<table class="table table-hover">
 							<tr>
 								<td>
-									<p>Android客户端&nbsp&nbsp&nbsp&nbsp
+									<p>Android新版客户端&nbsp&nbsp&nbsp&nbsp
 										<a class="btn btn-primary" href="https://download.speedss.top/BifrostV_v0.5.8.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
 									</p>
-									<!-- <p>先下载客户端，打开后点击右上角加号->import config from QRcode 扫描下方android二维码导入配置，点击成功后再点击右下角飞机图标开启服务</p> -->
-									<!-- <p>安装后登录网站帐号，然后同意vpn连接即可</p> -->
 									<p>安装后打开点击右上角图标, 导入, 从URL导入, 输入下方的订阅地址, 拉取到服务器列表后点击右下角图标连接服务器</p>
 									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.top/link/{$user->uuid}</code></p>
+									<p>Android旧版客户端&nbsp&nbsp&nbsp&nbsp
+										<a class="btn btn-primary" href="https://download.speedss.top/v2rayNG_universal.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+									</p>
+									<p>如果新版连接有问题, 可切换回旧版使用, 旧版不支持部分Android8.0机型</p>
+									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
 								</td>
 							</tr>
 							<tr>
