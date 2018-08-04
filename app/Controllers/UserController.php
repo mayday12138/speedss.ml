@@ -133,6 +133,11 @@ class UserController extends BaseController
         }        
     }
 
+    public function ticket($request, $response, $args)
+    {
+        return $this->view()->display('user/ticket.tpl');
+    }
+
     public function getclient($request, $response, $args)
     {
         $hk1 = $this->getSSURL(1); //hk1

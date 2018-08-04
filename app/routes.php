@@ -106,6 +106,7 @@ $app->group('/user', function () {
     $this->get('/watchvideo', 'App\Controllers\UserController:watchVideo');
     $this->get('/getserverconfig', 'App\Controllers\UserController:getServerConfig');
     $this->post('/fingerprint', 'App\Controllers\UserController:postFingerPrint');
+    $this->get('/ticket', 'App\Controllers\UserController:ticket');
 
 })->add(new Auth());
 

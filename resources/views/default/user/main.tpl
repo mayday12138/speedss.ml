@@ -153,6 +153,12 @@
                             <span>远程协助</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/user/ticket">
+                            <i class="fa fa-users"></i>
+                            <span>提交工单</span>
+                        </a>
+                    </li>
                     <!--<li>
                     <a href="/user/profile">
                         <i class="fa fa-user"></i> <span>我的信息</span>
