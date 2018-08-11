@@ -362,7 +362,17 @@ class AuthController extends BaseController
             $res['msg'] = "邮箱已经被注册了";
             return $this->echoJson($response, $res);
         }
-
+        // 拉黑的域名段
+        $data = file_get_contents("mail");
+        $mailDic = json_decode($data, true);
+        foreach ($mailDic as $mail) {
+            if (strpos($email, $mail) !== false) {
+                sleep(5);
+                $res['ret'] = 1;
+                $res['msg'] = '验证码已发送至您的邮箱，如果收件箱没有则在垃圾箱里.';
+                return $this->echoJson($response, $res);
+            }
+        }
         if (EmailVerify::sendVerification($email)) {
             $res['ret'] = 1;
             $res['msg'] = '验证码已发送至您的邮箱，如果收件箱没有则在垃圾箱里';
