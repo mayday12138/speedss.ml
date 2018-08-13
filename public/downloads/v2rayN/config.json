@@ -22,7 +22,7 @@
     "settings": {
       "vnext": [
         {
-          "address": "v2ray-nginx.speedss.top",
+          "address": "v2ray-nginx.speedss.xyz",
           "port": 443,
           "users": [
             {

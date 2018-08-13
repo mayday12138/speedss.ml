@@ -12,7 +12,7 @@ def printLog(content):
 def main(): 
     while 1:
         #从网站读取用户配置
-        url = "https://speedss.top/mu/users"
+        url = "https://speedss.xyz/mu/users"
         querystring = {"key":"tienon"}
 
         headers = {

@@ -130,7 +130,7 @@ class HomeController extends BaseController
             $nodes = v2rayNode::all();
             $links = "";
             foreach ($nodes as $node) {
-                $link = "vmess://" . base64_encode($node->security . ":" . $user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top") . "\n";
+                $link = "vmess://" . base64_encode($node->security . ":" . $user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.xyz") . "\n";
                 $links = $links . $link;
             }
             echo base64_encode($links);

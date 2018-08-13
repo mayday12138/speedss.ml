@@ -66,7 +66,7 @@ class UserController extends BaseController
             array_push($v2ray_qr_android_array, $v2ray_qr_1_android);
 
             // iOS的二维码
-            $v2ray_qr_1_ios = "vmess://" . base64_encode($node->security . ":" . $this->user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.top");
+            $v2ray_qr_1_ios = "vmess://" . base64_encode($node->security . ":" . $this->user->uuid . "@" . $node->address . ":" . $node->port) . "?obfs=" . $node->network . "&path=" . $node->path . "&tls=" .$node->tls . "&remarks=" .base64_encode($node->name) . "&group=" . base64_encode("speedss.xyz");
             array_push($v2ray_qr_ios_array, $v2ray_qr_1_ios);
         }
         
@@ -237,7 +237,7 @@ class UserController extends BaseController
             // echo shell_exec("tar -czvf ./downloads/v2rayN_win.zip -C ./downloads/v2rayN .");
             echo shell_exec("cd ./downloads;rm -f v2rayN_win.zip;zip -r v2rayN_win.zip ./v2rayN;cd ..");
             echo shell_exec("/bin/cp ./downloads/v2rayN_win.zip ./downloads/upload/v2rayN_win.zip");
-            $newResponse = $response->withStatus(302)->withHeader('Location', "https://download.speedss.top/v2rayN_win.zip");
+            $newResponse = $response->withStatus(302)->withHeader('Location', "https://download.speedss.xyz/v2rayN_win.zip");
             return $newResponse;
         } else {
             echo "permission denied.";

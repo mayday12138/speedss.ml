@@ -7,7 +7,7 @@
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">注册，然后变成一只猫。<a class="btn btn-primary" href="https://download.speedss.top/register_english_version.png">English</a></p>
+        <p class="login-box-msg">注册，然后变成一只猫。<a class="btn btn-primary" href="https://download.speedss.xyz/register_english_version.png">English</a></p>
 
             <div id="msg-success" class="alert alert-info alert-dismissable" style="display: none;">
                 <button type="button" class="close" id="ok-close" aria-hidden="true">&times;</button>

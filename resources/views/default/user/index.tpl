@@ -6,7 +6,7 @@
 	<section class="content-header">
 		<h1>
 			用户中心
-			<a class="btn btn-primary" href="https://download.speedss.top/main_page_english_version.png">English</a>
+			<a class="btn btn-primary" href="https://download.speedss.xyz/main_page_english_version.png">English</a>
 			<small>User Center</small>
 		</h1>
 	</section>
@@ -191,21 +191,21 @@
 						<i class="fa fa-bullhorn"></i>
 
 						<h3 class="box-title">客户端下载</h3>
-						<a class="btn btn-primary" href="https://download.speedss.top/client_download_english_version.png">English</a>
+						<a class="btn btn-primary" href="https://download.speedss.xyz/client_download_english_version.png">English</a>
 					</div>
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
 							<tr>
 								<td>
 									<p>Android新版客户端&nbsp&nbsp&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.top/BifrostV_v0.5.8.apk">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://download.speedss.xyz/BifrostV_v0.5.8.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<p>安装后打开点击右上角图标, 导入, 从URL导入, 输入下方的订阅地址, 拉取到服务器列表后点击右下角图标连接服务器</p>
-									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.top/link/{$user->uuid}</code></p>
+									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
 									<p>Android旧版客户端&nbsp&nbsp&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.top/v2rayNG_universal.apk">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://download.speedss.xyz/v2rayNG_universal.apk">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<p>如果新版连接有问题, 可切换回旧版使用, 旧版不支持部分Android8.0机型</p>
 									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
@@ -215,20 +215,20 @@
 								<td>
 									<p>Windows客户端&nbsp&nbsp
 										<a class="btn btn-primary" href="/user/getwinzip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后解压整个目录到桌面, 然后打开v2rayN.exe即可（如果报毒请选择信任，关闭其他代理软件，确保运行正常）</p>
-									<p>如果打开提示"请先安装.NET Framework", 先下载安装.net框架 <a href="https://download.speedss.top/dotNET_framework_4.6.2.exe">点我下载</a></p>
-									<p>如有问题，可以远程协助，<a href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a></p>
+									<p>如果打开提示"请先安装.NET Framework", 先下载安装.net框架 <a href="https://download.speedss.xyz/dotNET_framework_4.6.2.exe">点我下载</a></p>
+									<p>如有问题，可以远程协助，<a href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">协助流程</a></p>
 								</td>
 							</tr>
 							<tr>
 								<td>
 									<p>Mac客户端&nbsp&nbsp&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.top/V2RayX.app.zip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://download.speedss.xyz/V2RayX.app.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后解压打开V2RayX.app, 然后登录网站账号即可</p>
 									<p>如果提示身份不明的开发者, 需要到系统偏好设置->安全性与隐私->允许从以下位置下载的应用->仍要打开</p>
@@ -237,12 +237,12 @@
 							<tr>
 								<td>
 									<p>Linux客户端&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.top/v2ray_2.42_linux_32_new.zip">点击下载</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/diagnostics/">连接不上排查步骤</a>
-										<a class="btn btn-primary" href="https://doc.speedss.top/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
+										<a class="btn btn-primary" href="https://download.speedss.xyz/v2ray_2.42_linux_32_new.zip">点击下载</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
+										<a class="btn btn-primary" href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
 									<p>下载后需手动填写配置信息
-										<a href="https://doc.speedss.top/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
+										<a href="https://doc.speedss.xyz/temp">配置教程</a>（注意使用本网页上方的连接信息，教程的仅供参考）</p>
 								</td>
 							</tr>
 							<tr>
@@ -254,7 +254,7 @@
 									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
 									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
 									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写用户中心-iOS客户端下载的订阅地址, 然后点击完成, 提示更新中, 顺利拉到服务器列表后点击未连接即可正确连接服务器</p>
-									<p>订阅地址 <button id="ios_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#ios_link">点我复制</button> <code id="ios_link">https://speedss.top/link/{$user->uuid}</code></p>
+									<p>订阅地址 <button id="ios_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#ios_link">点我复制</button> <code id="ios_link">https://speedss.xyz/link/{$user->uuid}</code></p>
 									
 									<!--<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>-->
 									<!--<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>-->
