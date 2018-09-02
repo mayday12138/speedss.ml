@@ -230,8 +230,10 @@
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
-									<p>下载后解压打开V2RayX.app, 然后登录网站账号即可</p>
+									<p>下载后解压打开V2RayX.app, 然后输入订阅地址获取配置 (也可以在右上角app图标-服务器订阅处输入)</p>
 									<p>如果提示身份不明的开发者, 需要到系统偏好设置->安全性与隐私->允许从以下位置下载的应用->仍要打开</p>
+									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
+
 								</td>
 							</tr>
 							<tr>
@@ -251,14 +253,11 @@
 										<a class="btn btn-primary" href="https://itunes.apple.com/us/app/shadowrocket/id932747118?mt=8" target="_blank">点击查看</a>
 										<a class="btn btn-primary" href="/user/watchvideo">查看操作视频</a>
 									</p>
-									<p>iOS用户需要使用美区帐号在App Store搜索下载"shadowrocket"(需要付费，2.99美刀)</p>
+									<p>iOS用户需要使用美区帐号在App Store搜索下载"Shadowrocket"(需要付费，2.99美刀)</p>
+									<p style="color:red">注意是Shadowrocket 不是shadowRocket 国内苹果账号搜到的是假的</p>
 									<p>也可以找管理员索要已经付费过的美区苹果帐号免费下载（登录后在App Store->更新->已购买里面）</p>
-									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写用户中心-iOS客户端下载的订阅地址, 然后点击完成, 提示更新中, 顺利拉到服务器列表后点击未连接即可正确连接服务器</p>
+									<p>打开Shadowrocket软件后，点击右上角+号，添加类型为Subscribe，URL填写用户中心-iOS客户端下载的订阅地址, <br>然后点击完成, 提示更新中, 顺利拉到服务器列表后点击未连接即可正确连接服务器</p>
 									<p>订阅地址 <button id="ios_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#ios_link">点我复制</button> <code id="ios_link">https://speedss.xyz/link/{$user->uuid}</code></p>
-									
-									<!--<p>进入后点击左上角二维码图标 然后扫描下方iOS二维码导入配置，成功后点击配置的开关按钮<a href="/user/watchvideo"> 查看操作视频</a></p>-->
-									<!--<p>如果不方便扫描二维码, 也可以对二维码截图后在app->点击左上角->点击右上角->从相册读取二维码</p>-->
-									<!--<p><a class="btn btn-primary" href="/user/watchvideo">遇到问题？查看操作视频</a></p>-->
 								</td>
 							</tr>
 						</table>

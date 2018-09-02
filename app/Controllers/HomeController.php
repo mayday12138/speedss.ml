@@ -124,9 +124,69 @@ class HomeController extends BaseController
             $res['msg'] = "uuid不存在";
             return $this->echoJson($response, $res);
         }
-        // 判断bifrostv
+        // 判断设备类型
         $headerArray = $request->getHeader('User-Agent');
-        if (strpos($headerArray[0], 'okhttp') === false) {
+        if (strpos($headerArray[0], 'okhttp') !== false) {
+            if (strpos($headerArray[0], 'okhttp/3.5.0') !== false) {
+                // v2rayNG
+                $nodes = v2rayNode::all();
+                $configJson = [];
+                foreach ($nodes as $node) {
+                    $addNode["add"] = $node->address;
+                    $addNode["ps"] = $node->name;
+                    $addNode["port"] = $node->port;
+                    $addNode["id"] = $user->uuid;
+                    $addNode["aid"] = $node->alter_id;
+                    $addNode["net"] = $node->getWebsocketAlias();
+                    $addNode["host"] = $node->path;
+                    $addNode["tls"] = $node->getTlsAlias();
+                    $addNode["type"] = $node->type;
+                    $addNodeStr = json_encode($addNode);
+                    $addNodeStr = base64_encode($addNodeStr);
+                    $addNodeStr = "vmess://" . $addNodeStr;
+                    array_push($configJson, $addNodeStr);
+                }
+                echo json_encode($configJson, JSON_UNESCAPED_SLASHES);
+                return $response->withHeader('Content-type', 'text/plain');
+            } else {
+                // BifrostV okhttp/3.10.0
+                $nodes = v2rayNode::all();
+                $links = "";
+                foreach ($nodes as $node) {
+                    if ($node->port == "80") {
+                        $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
+                        $links = $links . $link;
+                    } else {
+                        $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&tsec=tls&ttlsa=1&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
+                        $links = $links . $link;
+                    }
+                }
+                echo $links;
+                return $response->withHeader('Content-type', 'text/plain');
+            }
+        } else if (strpos($headerArray[0], 'V2RayX') !== false) {
+            // V2rayX
+            $nodes = v2rayNode::all();
+            $configJson = [];
+            foreach ($nodes as $node) {
+                $addNode["add"] = $node->address;
+                $addNode["ps"] = $node->name;
+                $addNode["port"] = $node->port;
+                $addNode["id"] = $user->uuid;
+                $addNode["aid"] = $node->alter_id;
+                $addNode["net"] = $node->getWebsocketAlias();
+                $addNode["host"] = $node->path;
+                $addNode["tls"] = $node->getTlsAlias();
+                $addNode["type"] = $node->type;
+                $addNodeStr = json_encode($addNode);
+                $addNodeStr = base64_encode($addNodeStr);
+                $addNodeStr = "vmess://" . $addNodeStr;
+                array_push($configJson, $addNodeStr);
+            }
+            echo json_encode($configJson, JSON_UNESCAPED_SLASHES);
+            return $response->withHeader('Content-type', 'text/plain');
+        } else {
+            // Shadowrocket user-agent是随机的
             $nodes = v2rayNode::all();
             $links = "";
             foreach ($nodes as $node) {
@@ -134,20 +194,6 @@ class HomeController extends BaseController
                 $links = $links . $link;
             }
             echo base64_encode($links);
-            return $response->withHeader('Content-type', 'text/plain');
-        } else {
-            $nodes = v2rayNode::all();
-            $links = "";
-            foreach ($nodes as $node) {
-                if ($node->port == "80") {
-                    $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
-                    $links = $links . $link;
-                } else {
-                    $link = "bfv://" . $node->address . ":" . $node->port . "/vmess/1?rtype=lanchina&dns=8.8.8.8&tnet=ws&tsec=tls&ttlsa=1&aid=0&sec=aes-128-cfb&ws=path=/v2ray/" . "&uid=" . $user->uuid . "&headers=#" . urlencode($node->name) . "\n";
-                    $links = $links . $link;
-                }
-            }
-            echo $links;
             return $response->withHeader('Content-type', 'text/plain');
         }
     }
