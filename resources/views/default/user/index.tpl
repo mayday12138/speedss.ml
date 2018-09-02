@@ -202,13 +202,13 @@
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<p>安装后打开点击右上角图标, 导入, 从URL导入, 输入下方的订阅地址, 拉取到服务器列表后点击右下角图标连接服务器</p>
-									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
 									<p>Android旧版客户端&nbsp&nbsp&nbsp&nbsp
 										<a class="btn btn-primary" href="https://download.speedss.xyz/v2rayNG_universal.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
 									<p>如果新版连接有问题, 可切换回旧版使用, 旧版不支持部分Android8.0机型</p>
-									<p>安装后登录网站帐号，然后同意vpn连接即可</p>
+									<p>安装后输入订阅地址，然后同意vpn连接即可</p>
+									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
 								</td>
 							</tr>
 							<tr>
