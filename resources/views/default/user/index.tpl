@@ -197,16 +197,17 @@
 						<table class="table table-hover">
 							<tr>
 								<td>
-									<p>Android新版客户端&nbsp&nbsp&nbsp&nbsp
-										<a class="btn btn-primary" href="https://download.speedss.xyz/BifrostV_v0.5.8.apk">点击下载</a>
+									<p>Android尝鲜版(BifrostV)&nbsp&nbsp&nbsp&nbsp
+										<a class="btn btn-primary" href="https://download.speedss.xyz/BifrostV.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
+									<p>尝鲜版支持国内外流量分流, 分应用代理, 流量统计, 开机自启, 有高cpu占用问题</p>
 									<p>安装后打开点击右上角图标, 导入, 从URL导入, 输入下方的订阅地址, 拉取到服务器列表后点击右下角图标连接服务器</p>
-									<p>Android旧版客户端&nbsp&nbsp&nbsp&nbsp
+									<p>Android稳定版(v2rayNG)&nbsp&nbsp&nbsp&nbsp
 										<a class="btn btn-primary" href="https://download.speedss.xyz/v2rayNG_universal.apk">点击下载</a>
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 									</p>
-									<p>如果新版连接有问题, 可切换回旧版使用, 旧版不支持部分Android8.0机型</p>
+									<p>稳定版默认全局代理, 编译包支持arm x86, 功能稳定, cpu占用低</p>
 									<p>安装后输入订阅地址，然后同意vpn连接即可</p>
 									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
 								</td>
@@ -230,6 +231,7 @@
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/diagnostics/">连接不上排查步骤</a>
 										<a class="btn btn-primary" href="https://doc.speedss.xyz/%E8%BF%9C%E7%A8%8B%E5%8D%8F%E5%8A%A9%E6%B5%81%E7%A8%8B">远程协助</a>
 									</p>
+									<p>新增透明代理模式(所有app走代理)</p>
 									<p>下载后解压打开V2RayX.app, 然后输入订阅地址获取配置 (也可以在右上角app图标-服务器订阅处输入)</p>
 									<p>如果提示身份不明的开发者, 需要到系统偏好设置->安全性与隐私->允许从以下位置下载的应用->仍要打开</p>
 									<p>订阅地址 <button id="android_copy_button" class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#android_link">点我复制</button> <code id="android_link">https://speedss.xyz/link/{$user->uuid}</code></p>
