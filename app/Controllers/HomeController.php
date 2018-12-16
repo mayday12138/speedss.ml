@@ -126,9 +126,30 @@ class HomeController extends BaseController
         }
         // 判断设备类型
         $headerArray = $request->getHeader('User-Agent');
-        if (strpos($headerArray[0], 'okhttp') !== false) {
+        if (strpos($headerArray[0], 'Dalvik/') !== false) {
+                // v2rayNG new
+                $nodes = v2rayNode::all();
+                $links = "";
+                foreach ($nodes as $node) {
+                    $addNode["add"] = $node->address;
+                    $addNode["ps"] = $node->name;
+                    $addNode["port"] = $node->port;
+                    $addNode["id"] = $user->uuid;
+                    $addNode["aid"] = $node->alter_id;
+                    $addNode["net"] = $node->getWebsocketAlias();
+                    $addNode["host"] = $node->path;
+                    $addNode["tls"] = $node->getTlsAlias();
+                    $addNode["type"] = $node->type;
+                    $addNodeStr = json_encode($addNode);
+                    $addNodeStr = base64_encode($addNodeStr);
+                    $addNodeStr = "vmess://" . $addNodeStr . "\n";
+                    $links = $links . $addNodeStr;
+                }
+                echo base64_encode($links);
+                return $response->withHeader('Content-type', 'text/plain');
+        } else if (strpos($headerArray[0], 'okhttp') !== false) {
             if (strpos($headerArray[0], 'okhttp/3.5.0') !== false) {
-                // v2rayNG
+                // v2rayNG old
                 $nodes = v2rayNode::all();
                 $configJson = [];
                 foreach ($nodes as $node) {
