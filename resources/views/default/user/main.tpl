@@ -15,7 +15,7 @@
     <link href="/assets/public/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
-    <link href="/assets/public/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/public/css/skins/skin-alague.css" rel="stylesheet" type="text/css" />
 
     <link href="/assets/public/css/custom.css" rel="stylesheet" type="text/css" />
 
@@ -30,12 +30,15 @@
     <![endif]-->
 </head>
 
-<body class="skin-blue">
+<body class="skin-alague">
+    <div class="visible-xs" style="z-index:1100;position:fixed;left:50%;margin-left: -115px;width: 230px;height: 50px;">
+        <p style="font-size:20px;line-height:50px;text-align:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;color:#4b4b4b; background-color:#fff;">{$config["appName"]}</p>
+    </div>
     <!-- Site wrapper -->
     <div class="wrapper">
 
         <header class="main-header">
-            <a href="/user" class="logo">{$config["appName"]}</a>
+            <a href="/user" class="logo hidden-xs">{$config["appName"]}</a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
@@ -45,13 +48,6 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <!-- <button id="getclient" class="btn btn-primary btn-lg">获取客户端</button>
-                <button id="getconfig" class="btn btn-primary btn-lg">获取配置</button>
-                <button id="nodelist" class="btn btn-primary btn-lg">节点列表</button>
-                <button id="trafficrecord" class="btn btn-primary btn-lg">流量记录</button>
-                <button id="changeinfo" class="btn btn-primary btn-lg">修改资料</button>
-                <button id="invitefriend" class="btn btn-primary btn-lg">邀请好友</button>
-                <button id="homepage" class="btn btn-primary">主页</button> -->
 
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
@@ -133,26 +129,26 @@
                     </a>
                 </li>-->
 
-                    <!--<li>
+                    <!-- <li>
                         <a href="https://doc.speedss.xyz">
                             <i class="fa fa-file-text-o"></i>
                             <span>文档中心</span>
                         </a>
-                    </li>-->
+                    </li> -->
 
-                    <!--<li>
+                    <!-- <li>
                         <a href="https://doc.speedss.xyz/temp">
                             <i class="fa fa-file-text-o"></i>
                             <span>配置教程</span>
                         </a>
-                    </li>-->
+                    </li> -->
 
-                    <!--<li>
+                    <li>
                         <a href="https://doc.speedss.xyz/远程协助流程">
                             <i class="fa fa-users"></i>
                             <span>远程协助</span>
                         </a>
-                    </li>-->
+                    </li>
                     <li>
                         <a href="/user/ticket">
                             <i class="fa fa-users"></i>
