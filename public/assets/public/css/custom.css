@@ -31,3 +31,26 @@
     padding: 15px 30px 15px 15px;
     border-left: 5px solid #eee;
 }
+
+.fixed-btn {
+    position: fixed;
+    right: 0%;
+    bottom: 5%;
+    width: 408px;
+    height: 220px;
+    /*border: 1px solid #eee;
+    background-color: white;*/
+    font-size: 24px;
+    z-index: 1040;
+    -webkit-backface-visibility: hidden;
+}
+
+.fixed-btn a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+}
+
+
+

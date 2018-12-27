@@ -171,6 +171,7 @@ class AuthController extends BaseController
         // 这里有个坑 新加的字段传不上来 所以只能用旧的了
         $adminName = $request->getParam('repasswd');
         $code = $request->getParam('code');
+        $code = strtolower($code);
         $verifycode = $request->getParam('verifycode');
         // $adminName = $request->getParam('adminName');
         // echo $adminName;
@@ -191,52 +192,60 @@ class AuthController extends BaseController
 	    fwrite($myfile, $txt);
 	    fclose($myfile);
 
-        // check code
-        $c = InviteCode::where('code', $code)->first();
-        if ($c == null) {
-            // 如果邀请码为空则判断adminName
-            if ($adminName == null) {
-                $res['ret'] = 0;
-                $res['error_code'] = self::WrongCode;
-                $res['msg'] = "邀请码无效";
-                return $this->echoJson($response, $res);
-            } else {
-                // if ($adminName == "leslie" || $adminName == "管道工") {
-                if ($adminName == "管道工") {
-                    $char = Tools::genRandomChar(32);
-                    $c = new InviteCode();
-                    $c->code = $char;
-                    $c->user_id = 1;
-                    $c->save();
-                } else if ($adminName == "凸凸突突兔套") {
-                    $char = Tools::genRandomChar(32);
-                    $c = new InviteCode();
-                    $c->code = $char;
-                    $c->user_id = 298;
-                    $c->save();
-                } else {
-                    $res['ret'] = 0;
-                    $res['error_code'] = self::WrongCode;
-                    $res['msg'] = "管理员名字不正确";
-                    return $this->echoJson($response, $res);
-                }
-            }
+        // 检查推荐人邮箱
+        $referEmail = User::where('email', $code)->first();
+        if ($referEmail == null) {
+            $res['ret'] = 0;
+            $res['error_code'] = self::WrongCode;
+            $res['msg'] = "邀请人的邮箱无效, 请确认邀请人为本站会员";
+            return $this->echoJson($response, $res);
         }
+        // // check code
+        // $c = InviteCode::where('code', $code)->first();
+        // if ($c == null) {
+        //     // 如果邀请码为空则判断adminName
+        //     if ($adminName == null) {
+        //         $res['ret'] = 0;
+        //         $res['error_code'] = self::WrongCode;
+        //         $res['msg'] = "邀请码无效";
+        //         return $this->echoJson($response, $res);
+        //     } else {
+        //         // if ($adminName == "leslie" || $adminName == "管道工") {
+        //         if ($adminName == "管道工") {
+        //             $char = Tools::genRandomChar(32);
+        //             $c = new InviteCode();
+        //             $c->code = $char;
+        //             $c->user_id = 1;
+        //             $c->save();
+        //         } else if ($adminName == "凸凸突突兔套") {
+        //             $char = Tools::genRandomChar(32);
+        //             $c = new InviteCode();
+        //             $c->code = $char;
+        //             $c->user_id = 298;
+        //             $c->save();
+        //         } else {
+        //             $res['ret'] = 0;
+        //             $res['error_code'] = self::WrongCode;
+        //             $res['msg'] = "管理员名字不正确";
+        //             return $this->echoJson($response, $res);
+        //         }
+        //     }
+        // }
 
         // check email format
         if (!Check::isEmailLegal($email)) {
             $res['ret'] = 0;
             $res['error_code'] = self::IllegalEmail;
             $res['msg'] = "邮箱无效";
-            $c->delete();
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
         // check pwd length
-        if (strlen($passwd) < 8) {
+        if (strlen($passwd) < 6) {
             $res['ret'] = 0;
             $res['error_code'] = self::PasswordTooShort;
             $res['msg'] = "密码太短";
-            $c->delete();
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -254,15 +263,15 @@ class AuthController extends BaseController
             $res['ret'] = 0;
             $res['error_code'] = self::EmailUsed;
             $res['msg'] = "邮箱已经被注册了";
-            $c->delete();
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
 
         // verify email
         if (Config::get('emailVerifyEnabled') && !EmailVerify::checkVerifyCode($email, $verifycode)) {
             $res['ret'] = 0;
-            $res['msg'] = '邮箱验证代码不正确';
-            $c->delete();
+            $res['msg'] = '邮箱验证码不正确';
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -272,7 +281,7 @@ class AuthController extends BaseController
         if ($ipRegCount >= Config::get('ipDayLimit')) {
             $res['ret'] = 0;
             $res['msg'] = '当前IP注册次数超过限制';
-            $c->delete();
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
 
@@ -289,7 +298,7 @@ class AuthController extends BaseController
         $user->transfer_enable = Tools::toGB(Config::get('defaultTraffic'));
         $user->invite_num = Config::get('inviteNum');
         $user->reg_ip = Http::getClientIP();
-        $user->ref_by = $c->user_id;
+        $user->ref_by = $referEmail->id;
         $user->fingerprint = $fingerprint;
 
         // 添加注册地址
@@ -334,7 +343,7 @@ class AuthController extends BaseController
         if ($user->save()) {
             $res['ret'] = 1;
             $res['msg'] = "注册成功";
-            $c->delete();
+            // $c->delete();
             return $this->echoJson($response, $res);
         }
         $res['ret'] = 0;

@@ -313,6 +313,9 @@
 	<!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
+<div class="fixed-btn">
+	<img src="refer.png" width="100%" height="100%">
+</div>
 
 <script>
 	$(document).ready(function () {

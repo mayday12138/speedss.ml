@@ -7,8 +7,6 @@
     </div>
 
     <div class="register-box-body">
-        <p class="login-box-msg">注册，然后变成一只猫。<a class="btn btn-primary" href="https://download.speedss.xyz/register_english_version.png">English</a></p>
-
             <div id="msg-success" class="alert alert-info alert-dismissable" style="display: none;">
                 <button type="button" class="close" id="ok-close" aria-hidden="true">&times;</button>
                 <h4>
@@ -27,7 +25,6 @@
                 <input type="text" id="name" class="form-control" placeholder="昵称" />
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
-            <p>推荐使用qq邮箱, 方便联系</p>
             <div class="form-group has-feedback">
                 <input type="text" id="email" class="form-control" placeholder="邮箱" />
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -45,33 +42,16 @@
             {/if}
 
             <div class="form-group has-feedback">
-                <input type="password" id="passwd" class="form-control" placeholder="密码 (8位以上)" />
+                <input type="password" id="passwd" class="form-control" placeholder="密码" />
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
-
             <div class="form-group has-feedback">
-                <input type="password" id="repasswd" class="form-control" placeholder="重复密码 (8位以上)" />
-                <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
-            </div>
-            <!--<p>为了大家的安全，需要验证一下你是好人</p>-->
-            <p>邀请码或管理员的网名二选一，必填一个</p>
-            <div class="form-group has-feedback">
-                <input type="text" id="code" value="{$code}" class="form-control" placeholder="邀请码 (请向管理员索取)" />
+                <input type="text" id="code" value="{$code}" class="form-control" placeholder="邀请人邮箱" />
                 <span class="glyphicon glyphicon-send form-control-feedback"></span>
             </div>
-            <div class="form-group has-feedback">
-                <input type="text" id="adName" class="form-control" placeholder="管理员的网名" />
-                <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            </div>
 
             <div class="form-group has-feedback">
-                <p>注册即代表同意
-                    <a href="/tos">服务条款</a>
-                </p>
-            </div>
-
-            <div class="form-group has-feedback">
-                <button type="submit" id="reg" class="btn btn-primary btn-block btn-flat">同意服务条款并提交注册</button>
+                <button type="submit" id="reg" class="btn btn-primary btn-block btn-flat">注册</button>
             </div>
 
             <a href="/auth/login" class="text-center">已经注册？请登录</a>
@@ -111,12 +91,12 @@
             }
 
             function register() {
-                if ($("#passwd").val() != $("#repasswd").val()) {
-                    $("#msg-success").hide(10);
-                    $("#msg-error").show(100);
-                    $("#msg-error-p").html("两次密码输入不符");
-                    return;
-                }
+                // if ($("#passwd").val() != $("#repasswd").val()) {
+                //     $("#msg-success").hide(10);
+                //     $("#msg-error").show(100);
+                //     $("#msg-error-p").html("两次密码输入不符");
+                //     return;
+                // }
 
                 $.ajax({
                     type: "POST",

@@ -133,26 +133,26 @@
                     </a>
                 </li>-->
 
-                    <li>
+                    <!--<li>
                         <a href="https://doc.speedss.xyz">
                             <i class="fa fa-file-text-o"></i>
                             <span>文档中心</span>
                         </a>
-                    </li>
+                    </li>-->
 
-                    <li>
+                    <!--<li>
                         <a href="https://doc.speedss.xyz/temp">
                             <i class="fa fa-file-text-o"></i>
                             <span>配置教程</span>
                         </a>
-                    </li>
+                    </li>-->
 
-                    <li>
+                    <!--<li>
                         <a href="https://doc.speedss.xyz/远程协助流程">
                             <i class="fa fa-users"></i>
                             <span>远程协助</span>
                         </a>
-                    </li>
+                    </li>-->
                     <li>
                         <a href="/user/ticket">
                             <i class="fa fa-users"></i>
