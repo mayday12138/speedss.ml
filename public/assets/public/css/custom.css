@@ -31,3 +31,52 @@
     padding: 15px 30px 15px 15px;
     border-left: 5px solid #eee;
 }
+
+.main-header {
+    width: 100%;
+    position: fixed;
+    max-height: 100px;
+    z-index: 1030;
+}
+
+.main-sidebar, .left-side {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 60px;
+    padding-left: 10px;
+    min-height: 100%;
+    width: 230px;
+    z-index: 810;
+    -webkit-transition: -webkit-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -moz-transition: -moz-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    -o-transition: -o-transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+    transition: transform .3s cubic-bezier(.32, 1.25, .375, 1.15);
+}
+
+.navbar-nav>.user-menu>.dropdown-menu>li.user-header>p {
+    z-index: 5;
+    color: #fff;
+    color: #4b4b4b;
+    font-size: 17px;
+    margin-top: 10px;
+}
+
+.skin-alague .content-wrapper,
+.skin-alague .right-side {
+  background-color: #ffffff;
+  margin-top: 50px;
+}
+
+.box {
+    border-top: 0;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.15);
+}
+
+.table-responsive {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: 0;
+}
