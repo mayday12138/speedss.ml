@@ -1,5 +1,5 @@
 {include file='auth/header.tpl'}
-<body class="login-page">
+<body class="login-page skin-alague">
 <div class="login-box">
     <div class="login-logo">
         <a href="#"><b>{$config['appName']}</b></a>

@@ -117,6 +117,13 @@
                         </a>
                     </li>
 
+                    <li>
+                        <a href="/user/invite">
+                            <i class="fa fa-users"></i>
+                            <span>邀请好友 (30%返利)</span>
+                        </a>
+                    </li>
+
                     <!--<li>
                     <a href="/user/node">
                         <i class="fa fa-sitemap"></i> <span>节点列表</span>
@@ -172,13 +179,6 @@
                         <a href="/user/edit">
                             <i class="fa  fa-pencil"></i>
                             <span>修改资料</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="/user/invite">
-                            <i class="fa fa-users"></i>
-                            <span>邀请好友</span>
                         </a>
                     </li>
 

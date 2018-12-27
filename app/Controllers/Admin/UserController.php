@@ -44,6 +44,32 @@ class UserController extends AdminController
         $user->payment_name = $order->payment_name;
         $user->save();
         $order->save();
+
+        // 邀请返利
+        date_default_timezone_set('Asia/Shanghai');
+        $referUser = User::find($user->ref_by);
+        if ($referUser->payment_date > time()) {
+            // 没过期则累加
+            if ($order->payment_name == "季度套餐") {
+                $referUser->payment_date = strtotime(date('Y-m-d H:i:s', $referUser->payment_date) . " +1 month");
+            } else if ($order->payment_name == "半年套餐") {
+                $referUser->payment_date = strtotime(date('Y-m-d H:i:s', $referUser->payment_date) . " +2 month");
+            } else if ($order->payment_name == "一年套餐") {
+                $referUser->payment_date = strtotime(date('Y-m-d H:i:s', $referUser->payment_date) . " +4 month");
+            }
+        } else {
+            // 过期则当前时间加
+            if ($order->payment_name == "季度套餐") {
+                $referUser->payment_date = strtotime(" +1 month");
+            } else if ($order->payment_name == "半年套餐") {
+                $referUser->payment_date = strtotime(" +2 month");
+            } else if ($order->payment_name == "一年套餐") {
+                $referUser->payment_date = strtotime(" +4 month");
+            }
+        }
+        
+        $referUser->save();
+
         $newResponse = $response->withStatus(302)->withHeader('Location', '/admin/order');
         return $newResponse;
     }

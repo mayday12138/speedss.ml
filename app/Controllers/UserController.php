@@ -8,6 +8,7 @@ use App\Models\Node;
 use App\Models\TrafficLog;
 use App\Models\Order;
 use App\Models\V2rayNode;
+use App\Models\User;
 use App\Models\UserInfo;
 use App\Models\UserFingerprint;
 use App\Models\Plan;
@@ -333,11 +334,29 @@ class UserController extends BaseController
         return $this->view()->assign('method', $method)->display('user/edit.tpl');
     }
 
+    function cmp($a, $b)
+    {
+        return strcmp($a->id, $b->id);
+    }
 
     public function invite($request, $response, $args)
     {
-        $codes = $this->user->inviteCodes();
-        return $this->view()->assign('codes', $codes)->display('user/invite.tpl');
+        $shareurl = Config::get('baseUrl') . "/auth/register?code=" . $this->user->email;
+        $users = User::where("ref_by", $this->user->id)->orderBy('id','desc')->get();
+        $orders = array();
+        foreach ($users as $user) {   
+            $order = Order::where("user_id", $user->id)->orderBy('id','desc')->get();
+            foreach ($order as $or) {
+                array_push($orders,$or);
+            }
+        }
+        usort($orders, array($this, "cmp"));
+        $orders = array_reverse($orders, false);
+        return $this->view()
+                    ->assign('users', $users)
+                    ->assign('orders', $orders)
+                    ->assign('shareurl', $shareurl)
+                    ->display('user/invite.tpl');
     }
 
     public function doInvite($request, $response, $args)

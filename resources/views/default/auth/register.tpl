@@ -1,6 +1,6 @@
 {include file='auth/header.tpl'}
 
-<body class="register-page">
+<body class="register-page skin-alague">
 <div class="register-box">
     <div class="register-logo">
         <a href="../"><b>{$config['appName']}</b></a>
