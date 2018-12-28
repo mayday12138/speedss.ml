@@ -32,8 +32,13 @@
 
 <body class="skin-alague">
     <div class="visible-xs" style="z-index:1100;position:fixed;left:50%;margin-left: -115px;width: 230px;height: 50px;">
-        <p style="font-size:20px;line-height:50px;text-align:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;color:#4b4b4b; background-color:#fff;">{$config["appName"]}</p>
+        <p onclick="goToHome()" style="font-size:20px;line-height:50px;text-align:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:300;color:#4b4b4b; background-color:#fff;">{$config["appName"]}</p>
     </div>
+    <script>
+        function goToHome() {
+            location.href = "/user";
+        }
+    </script>
     <!-- Site wrapper -->
     <div class="wrapper">
 
